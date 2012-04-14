@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link type='text/css' href='{{ STATIC_URL }}main.css' rel='stylesheet' />
+  </head>
+  <body>
+    {% for result in results %}
+      
+      <h3>{{result.userName}}</h3>
+
+      <div>{{result.firstName}} {{result.lastName}}</div>
+      
+      <div class="info{% if 'tribe' in result.matchingFields %} match{% endif %}">
+        {{ result.tribe}}
+      </div>
+
+      <div class="info{% if 'lastName' in result.matchingFields %} match{% endif %}">
+        {{ result.lastName}}
+      </div>
+
+      <div class="info{% if 'homeTown' in result.matchingFields %} match{% endif %}">
+        {{ result.homeTown}}
+      </div>
+
+      <div class="info{% if 'familySize' in result.matchingFields %} match{% endif %}">
+        {{ result.familySize}}
+      </div>
+
+      <div class="info{% if 'countryOfBirth' in result.matchingFields %} match{% endif %}">
+        {{ result.countryOfBirth}}
+      </div>
+
+
+    {% endfor %}
+  </body>
+</html>
