@@ -1,0 +1,2 @@
+#!/bin/bash
+java -Xmx2G -Xms512m -XX:+UseParallelGC -XX:-HeapDumpOnOutOfMemoryError -jar target/story_cmp.jar "$@"
