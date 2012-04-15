@@ -16,17 +16,28 @@ object Main extends scala.App {
   
   val lp = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
   
-  val sent2 = args(0)
+  val file1 = fileToString(args(0))
+  val file2 = fileToString(args(1))
+  
   val tokenizerFactory = 
       PTBTokenizer.factory(new CoreLabelTokenFactory(), "")
   
+
+  val freq1 = getMostFrequent(file1)
+  val freq2 = getMostFrequent(file2)
+  
+  val termsInCommon = freq1.keySet.intersect(freq2.keySet)
+  println("Score " + termsInCommon.size + "/20")
+  println("Terms in common " + termsInCommon.map(t => freq1.getOrElse(t, (Set[String](), 0))._1 ++ freq2.getOrElse(t, (Set[String](), 0))._1).flatten.mkString(", "))
+  
+  def fileToString(f: String) = { 
+    val source = scala.io.Source.fromFile(f)
+    val lines = source .mkString
+  	source.close ()
+  	lines
+  }
+  
       
-  val freqs = getNounsFreq(sent2)
-  
-  val best = freqs.keySet.toList.sort((k1, k2) => freqs(k1) > freqs(k2)).slice(0, 10)
-  print(best.map(b => b + ": " + freqs(b)).mkString("\n"))
-  
-  
   def getNouns(tree: Tree): List[Tree] = {
     if(Set("NP", "NNS", "NN", "NNP", "PRP").contains(tree.label.value)) 
       tree :: tree.getChildrenAsList().toList.map(getNouns(_)).flatten
@@ -34,8 +45,15 @@ object Main extends scala.App {
       tree.getChildrenAsList().toList.map(getNouns(_)).flatten
   }
   
+  def getMostFrequent(story: String) = {
+    val freqs = getNounsFreq(story)
+  
+    val freqKeys = freqs.keySet.toList.sort((k1, k2) => freqs(k1)._2 > freqs(k2)._2).slice(0, 20)
+    freqs.filterKeys(freqKeys.contains(_))
+  }
+  
   def getNounsFreq(story: String) = {
-    val sentences = story.split("\\.").filter(!_.isEmpty)
+    val sentences = story.split("\\.").filter(_.length > 3)
     
     val nouns = sentences.map(sentence => {
 	      
@@ -43,20 +61,33 @@ object Main extends scala.App {
 	      tokenizerFactory.getTokenizer(new StringReader(sentence)).tokenize()
 	    val parse = lp.apply(rawWords2)
 	  
-	    parse.pennPrint()
-	    println()
-	  
 	    getNouns(parse)
     }).flatten
     
     val asStrings = nouns.map(_.getLeaves().asInstanceOf[java.util.List[Tree]].toList.mkString(" ").toLowerCase()).toSet
     val filtered = asStrings.filter(noun => !commonWords.contains(noun))
-    filtered.map(noun => noun -> countOccurences(story.toLowerCase(), noun)).toMap
+    val freqs = filtered.map(noun => noun -> countOccurences(story.toLowerCase(), noun)).toMap
     
-//    val stemsMb = scala.collection.mutable.Map[String,]
-//    filtered.keySet.foreach(toStem => {
-//      
-//    })
+    val stems = scala.collection.mutable.Map[String, scala.collection.mutable.Set[String]]()
+    freqs.keys.foreach(toStem => {
+      val stemmed = stem(toStem)
+      if(stems.isDefinedAt(stemmed))
+        stems(stemmed).add(toStem)
+      else
+        stems.put(stemmed, scala.collection.mutable.Set(toStem))
+    })
+    
+    stems.map(e => {
+      e._1 -> (e._2, e._2.foldLeft (0)((a,b) => {a + freqs(b)}))
+    })
+  }
+  
+  def stem(toStem: String) = {
+    val stemmer = new Stemmer()
+    stemmer.add(toStem.toCharArray(), toStem.length)
+    stemmer.stem()
+    
+    stemmer.toString
   }
   
   def countOccurences(text: String, subst: String): Int = {
