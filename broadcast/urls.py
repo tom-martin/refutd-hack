@@ -6,11 +6,5 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('broadcast.views',
     (r'^$', 'index'),
-    (r'^createuser1$', 'createuser1'),
-    (r'^createuser2$', 'createuser2'),
-    (r'^createuser3$', 'createuser3'),
-    (r'^createuser4$', 'createuser4'),
-    (r'^accept$', 'accept'),
-    (r'^homescreen$', 'homescreen'),
 
 )

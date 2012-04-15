@@ -5,8 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^', include('refutd_hack.urls')),
-    (r'^mobile/', include('broadcast.urls'))
+    (r'^', include('youmayknow.urls')),
     # Examples:
     # url(r'^$', 'refutd.views.home', name='home'),
     # url(r'^refutd/', include('refutd.foo.urls')),

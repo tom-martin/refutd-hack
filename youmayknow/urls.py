@@ -4,10 +4,16 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('refutd_hack.views',
+urlpatterns = patterns('youmayknow.views',
     (r'^$', 'index'),
     (r'^youmayknow$', 'youmayknow'),
-    (r'^user/createuser$', 'createuser')
+
+    (r'^createuser1$', 'createuser1'),
+    (r'^createuser2$', 'createuser2'),
+    (r'^createuser3$', 'createuser3'),
+    (r'^createuser4$', 'createuser4'),
+    (r'^accept$', 'accept'),
+    (r'^homescreen$', 'homescreen'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
