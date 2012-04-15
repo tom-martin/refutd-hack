@@ -1,6 +1,9 @@
 from django.shortcuts import render_to_response
 from django.template import Context, loader, RequestContext
 from suds.client import Client
+import redis
+
+r = redis.StrictRedis(host='localhost', port=6379, db=1)
 
 url = 'http://78.109.215.13:8080/RefugeesUnited-RefugeesUnitedBusiness/OpenAPIBean?wsdl'
 client = Client(url)
@@ -40,13 +43,17 @@ def youmayknow(request):
   profile = client.service.GetProfile(guid, apiKey)
 
   results, fields = findMatches(profile)
+  newCount = 0
   for result in results:
+    result['seen'] = result.guid in r.smembers("guids_seen:" + guid)
+    if not result['seen']: 
+      r.sadd("guids_seen:" + guid, result.guid)
+      newCount += 1
     result['matchingFields'] = []
     for field in fields:
       if profile[field] == result[field]:
         result['matchingFields'].append(field)  
-      
-    
   
-  return render_to_response('youmayknow.html', {'results': results}, context_instance=RequestContext(request))
+
+  return render_to_response('youmayknow.html', {'newCount': newCount, 'results': results}, context_instance=RequestContext(request))
   
