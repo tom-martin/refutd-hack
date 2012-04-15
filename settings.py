@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'refutd_hack',
     'broadcast',
+    'bootstrap',
 )
 
 # A sample logging configuration. The only tangible logging
