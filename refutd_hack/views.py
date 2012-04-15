@@ -24,7 +24,7 @@ def findMatches(result):
   if applyField("familySize", "familySize"): fieldsSearchedOn.append("familySize")
   if applyField("countryOfBirth", "countryOfBirth"): fieldsSearchedOn.append("countryOfBirth")
 
-  if len(fieldsSearchedOn) >= 3: 
+  if len(fieldsSearchedOn) >= 3:
     resultSetSize = client.service.AdvancedSearchResultCount(newSearch, "27341080-b050-11df-94e2-0800200c9a66")
     if resultSetSize <= 10 and resultSetSize > 1:
       return client.service.AdvancedSearch(newSearch, "27341080-b050-11df-94e2-0800200c9a66"), fieldsSearchedOn
@@ -33,6 +33,10 @@ def findMatches(result):
 
 def index(request):
   return render_to_response('index.html', {}, context_instance=RequestContext(request))
+
+def createuser(request):
+  print request.REQUEST
+  return render_to_response('search.html', {}, context_instance=RequestContext(request))
 
 def youmayknow(request):
   guid = request.GET["guid"]
@@ -44,9 +48,9 @@ def youmayknow(request):
     result['matchingFields'] = []
     for field in fields:
       if profile[field] == result[field]:
-        result['matchingFields'].append(field)  
-      
-    
-  
+        result['matchingFields'].append(field)
+
+
+
   return render_to_response('youmayknow.html', {'results': results}, context_instance=RequestContext(request))
-  
+

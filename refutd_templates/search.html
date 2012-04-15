@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Search &rsaquo; Refugees United</title>
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/uniform.css" />
+        <!--[if IE 7]>
+            <link rel="stylesheet" type="text/css" href="/css/ie7.css">
+        <![endif]-->
+        <style type="text/css">
+            .langselect div.selector{
+                width:208px;
+            }
+            .langselect div.selector select{
+                width:200px;
+            }
+            .langselect div.selector span{
+                width:180px;
+            }
+        </style>
+
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/uniform.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/search.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/sidebar.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/buttons.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/modal.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/viewprofile.css" />
+
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js" ></script>
+        <script type="text/javascript">
+            $('document').ready(function() {
+                $('#language-select').change(function(){
+                    location.href = '/user/language/' + $('#language-select option:selected').val();
+                    return false;
+                });
+
+                var lang = 'en';
+                $('#language-select').val(lang);
+                return false;
+            });
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4194694-1']);
+            _gaq.push(['_setDomainName', '.refunite.org']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/search.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/spin.min.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.simplemodal.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/viewprofile.js"></script>
+
+    </head>
+    <body>
+    <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=151761074867923";
+                  fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+        </script>
+    <div id="wrapper">
+        <div id="header">
+            <div id="headerlogo"><a href="/search"><img src="{{STATIC_URL}}img/redux/headerlogo.png" alt="Refugees United - reuniting loved ones" /></a></div>
+            <div id="headerlinks">
+                <div class="fb-like" data-href="http://www.facebook.com/refunite" data-send="false" data-layout="button_count" data-show-faces="false" style="padding-top: 3px"></div>
+                <a href="/page/about_us"><img src="{{STATIC_URL}}img/redux/linksq.png" class="linksquare" />About us</a>
+            </div>
+            <div id="headerlanguage">
+                <div id="headerlanguageimg">
+                    <img src="{{STATIC_URL}}img/redux/headerworld.png" alt="Choose Language" />
+                </div>
+                <div id="headerlanguageselect" class="langselect">
+                    <select id="language-select">
+                      
+<option>More languages coming soon..</option>
+<option value="en">English</option>
+<option value="ar">العربية</option>
+<option value="fr">Français</option>
+<option value="so">Soomaaliga</option>
+<option value="sw">Swahili</option>
+<option value="pt">Português</option>
+<option value="es">Español</option>
+
+
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="contentwrap">
+            <div id="content">
+
+
+
+<script type="text/javascript">
+    var userGuid = "ff80818136aa8b090136b4b5add00466";
+
+    var maleSelectedText = "What is his name?";
+    var femaleSelectedText = "What is her name?";
+    var maleSelectedText_Submit = "or state his name";
+    var femaleSelectedText_Submit = "or state her name";
+    var maleStep3Header = "What is his age?";
+    var femaleStep3Header = "What is her age?";
+    var maleStep3Info = "Improve your search results by selecting the age of the person<br />(if you do not know his exact age, make a qualified guess<br />or select 'I do not know').";
+    var femaleStep3Info = "Improve your search results by selecting the age of the person<br />(if you do not know her exact age, make a qualified guess<br />or select 'I do not know').";
+    var maleStep4Header = "In which country was he born?";
+    var femaleStep4Header = "In which country was she born?";
+    var nameInfoText = "There are {0} users named '{1}'. You may consider adding a family name in order to improve your search results.";
+    var ageInfoText = "There are {0} users at the age of {1} in the database.";
+    var ageInfoText2 = "There are {0} in the database.";
+    var ageInfoText3 = "There are {0} in the database below 18.";
+    var countryInfoText = "There are {0} in the database<br />from '{1}'.";
+    var matchesText = "matches";
+    var searchingText = "Searching";
+    var searchResultText = "You have <span>{0} matches</span><br />to your search.";
+    var step5BirthplMaleText = "In which city/village was he born?";
+    var step5BirthplFeMaleText = "In which city/village was she born?";
+    var step5siblingsMaletext = "How many siblings does he have?";
+    var step5siblingsFeMaletext = "How many siblings does she have?";
+    var step5tribeMaletext = "Which tribe or clan, if any, does he belong to?";
+    var step5tribeFeMaletext = "Which tribe or clan, if any, does she belong to?";
+    var step5parentsMaletext = "Where are his parents from?";
+    var step5parentsFeMaletext = "Where are her parents from?";
+
+    var nickNamesLabel = "Nickname(s)";
+    var ageLabel = "Age";
+    var countryLabel = "Country of birth";
+    var genderLabel = "Gender";
+    var markProfileLabel = "Mark profile as interesting";
+    var unmarkProfileLabel = "Remove from interesting profiles";
+    var fullProfileLabel = "View full profile";
+    var maleLabel = "Male";
+    var femaleLabel = "Female";
+    var unknownLabel = "Unkown";
+    var countries = [{name: 'I do not know', value: '-1'},{name: 'Afghanistan', value: '234'},{name: 'Albania', value: '2'},{name: 'Algeria', value: '3'},{name: 'American Samoa', value: '4'},{name: 'Andorra', value: '5'},{name: 'Angola', value: '6'},{name: 'Anguilla', value: '7'},{name: 'Antarctica', value: '8'},{name: 'Antigua and Barbuda', value: '9'},{name: 'Argentina', value: '10'},{name: 'Armenia', value: '11'},{name: 'Aruba', value: '12'},{name: 'Australia', value: '13'},{name: 'Austria', value: '14'},{name: 'Azerbaijan', value: '15'},{name: 'Bahamas (The)', value: '16'},{name: 'Bahrain', value: '17'},{name: 'Bangladesh', value: '18'},{name: 'Barbados', value: '19'},{name: 'Belarus', value: '20'},{name: 'Belgium', value: '21'},{name: 'Belize', value: '22'},{name: 'Benin', value: '23'},{name: 'Bermuda', value: '24'},{name: 'Bhutan', value: '25'},{name: 'Bolivia', value: '26'},{name: 'Bosnia and Herzegovina', value: '27'},{name: 'Botswana', value: '28'},{name: 'Bouvet Island', value: '29'},{name: 'Brazil', value: '31'},{name: 'Br. Indian Ocean Territory', value: '30'},{name: 'British Virgin Islands', value: '32'},{name: 'Brunei Darussalam', value: '33'},{name: 'Bulgaria', value: '34'},{name: 'Burkina Faso', value: '35'},{name: 'Burundi', value: '36'},{name: 'Cambodia', value: '37'},{name: 'Cameroon', value: '38'},{name: 'Canada', value: '39'},{name: 'Cape Verde', value: '40'},{name: 'Cayman Islands', value: '41'},{name: 'Central African Republic', value: '42'},{name: 'Chad', value: '43'},{name: 'Chile', value: '44'},{name: 'China', value: '45'},{name: 'Christmas Island', value: '46'},{name: 'Cocos Island', value: '47'},{name: 'Colombia', value: '48'},{name: 'Comoros', value: '49'},{name: 'Congo, Democratic Republic of ', value: '61'},{name: 'Congo, Republic of', value: '50'},{name: 'Cook Islands', value: '51'},{name: 'Costa Rica', value: '52'},{name: 'Croatia', value: '53'},{name: 'Cuba', value: '54'},{name: 'Cyprus', value: '55'},{name: 'Czech Republic', value: '56'},{name: 'Denmark', value: '57'},{name: 'Djibouti', value: '58'},{name: 'Dominica', value: '59'},{name: 'Dominican Republic', value: '60'},{name: 'Ecuador', value: '62'},{name: 'Egypt', value: '63'},{name: 'El Salvador', value: '64'},{name: 'Equatorial Guinea', value: '65'},{name: 'Eritrea', value: '66'},{name: 'Estonia', value: '67'},{name: 'Ethiopia', value: '68'},{name: 'Falkland Islands', value: '69'},{name: 'Fiji', value: '70'},{name: 'Finland', value: '71'},{name: 'France', value: '73'},{name: 'French Guiana', value: '74'},{name: 'French Polynesia', value: '75'},{name: 'Fr. Southern Ant.Lands', value: '72'},{name: 'Gabon', value: '76'},{name: 'Gambia (The)', value: '77'},{name: 'Georgia', value: '78'},{name: 'Germany', value: '79'},{name: 'Ghana', value: '80'},{name: 'Greece', value: '81'},{name: 'Greenland', value: '82'},{name: 'Grenada', value: '83'},{name: 'Guadeloupe', value: '84'},{name: 'Guam', value: '85'},{name: 'Guatemala', value: '86'},{name: 'Guinea', value: '87'},{name: 'Guinea-Bissau', value: '88'},{name: 'Guyana', value: '89'},{name: 'Haiti', value: '90'},{name: 'Heard Is.', value: '91'},{name: 'Honduras', value: '92'},{name: 'Hungary', value: '93'},{name: 'Iceland', value: '94'},{name: 'India', value: '95'},{name: 'Indonesia', value: '96'},{name: 'Iran', value: '97'},{name: 'Iraq', value: '98'},{name: 'Ireland', value: '99'},{name: 'Israel', value: '100'},{name: 'Italy', value: '101'},{name: 'Ivory Coast', value: '102'},{name: 'Jamaica', value: '103'},{name: 'Jan Mayen', value: '104'},{name: 'Japan', value: '105'},{name: 'Jordan', value: '106'},{name: 'Kazakhstan', value: '107'},{name: 'Kenya', value: '108'},{name: 'Kiribati', value: '109'},{name: 'Kuwait', value: '110'},{name: 'Kyrgyzstan', value: '111'},{name: 'Laos', value: '112'},{name: 'Latvia', value: '113'},{name: 'Lebanon', value: '114'},{name: 'Lesotho', value: '115'},{name: 'Liberia', value: '116'},{name: 'Libya', value: '117'},{name: 'Liechtenstein', value: '118'},{name: 'Lithuania', value: '119'},{name: 'Luxembourg', value: '120'},{name: 'Macedonia', value: '121'},{name: 'Madagascar', value: '122'},{name: 'Malawi', value: '123'},{name: 'Malaysia', value: '124'},{name: 'Maldives', value: '125'},{name: 'Mali', value: '126'},{name: 'Malta', value: '127'},{name: 'Marshall Islands', value: '128'},{name: 'Martinique', value: '129'},{name: 'Mauritania', value: '130'},{name: 'Mauritius', value: '131'},{name: 'Mayotte', value: '132'},{name: 'Mexico', value: '133'},{name: 'Micronesia', value: '134'},{name: 'Moldova', value: '135'},{name: 'Monaco', value: '136'},{name: 'Mongolia', value: '137'},{name: 'Montserrat', value: '138'},{name: 'Morocco', value: '139'},{name: 'Mozambique', value: '140'},{name: 'Myanmar', value: '141'},{name: 'Namibia', value: '142'},{name: 'Nauru', value: '143'},{name: 'Nepal', value: '144'},{name: 'Netherlands', value: '145'},{name: 'Netherlands Antilles', value: '146'},{name: 'New Caledonia', value: '147'},{name: 'New Zealand', value: '148'},{name: 'Nicaragua', value: '149'},{name: 'Niger', value: '150'},{name: 'Nigeria', value: '151'},{name: 'Niue', value: '152'},{name: 'Norfolk Island', value: '153'},{name: 'Northern Mariana Islands', value: '155'},{name: 'North Korea', value: '154'},{name: 'Norway', value: '156'},{name: 'Oman', value: '157'},{name: 'Pakistan', value: '158'},{name: 'Palau', value: '159'},{name: 'Panama', value: '160'},{name: 'Papua New Guinea', value: '161'},{name: 'Paraguay', value: '162'},{name: 'Peru', value: '163'},{name: 'Philippines', value: '164'},{name: 'Pitcairn Islands', value: '165'},{name: 'Poland', value: '166'},{name: 'Portugal', value: '167'},{name: 'Puerto Rico', value: '168'},{name: 'Qatar', value: '169'},{name: 'Reunion', value: '170'},{name: 'Romania', value: '171'},{name: 'Russian Federation', value: '172'},{name: 'Rwanda', value: '173'},{name: 'Saint Helena', value: '174'},{name: 'Saint Kitts and Nevis', value: '175'},{name: 'Saint Lucia', value: '176'},{name: 'Samoa', value: '177'},{name: 'San Marino', value: '178'},{name: 'Sao Tome and Principe', value: '179'},{name: 'Saudi Arabia', value: '180'},{name: 'Senegal', value: '181'},{name: 'Serbia and Montenegro', value: '182'},{name: 'Seychelles', value: '183'},{name: 'Sierra Leone', value: '184'},{name: 'Singapore', value: '185'},{name: 'Slovakia', value: '186'},{name: 'Slovenia', value: '187'},{name: 'Soloman Islands', value: '188'},{name: 'Somalia', value: '189'},{name: 'South Africa', value: '190'},{name: 'South Georgia and the South S. Is.', value: '191'},{name: 'South Korea', value: '192'},{name: 'South Sudan', value: '235'},{name: 'Spain', value: '193'},{name: 'Sri Lanka', value: '194'},{name: 'St. Pierre and Miquelon', value: '195'},{name: 'St. Vincent', value: '196'},{name: 'Sudan', value: '197'},{name: 'Suriname', value: '198'},{name: 'Swaziland', value: '199'},{name: 'Sweden', value: '200'},{name: 'Switzerland', value: '201'},{name: 'Syria', value: '202'},{name: 'Taiwan', value: '203'},{name: 'Tajikistan', value: '204'},{name: 'Tanzania', value: '205'},{name: 'Thailand', value: '206'},{name: 'Timor-Leste', value: '207'},{name: 'Togo', value: '208'},{name: 'Tokelau', value: '209'},{name: 'Tonga', value: '210'},{name: 'Trinidad and Tobago', value: '211'},{name: 'Tunisia', value: '212'},{name: 'Turkey', value: '213'},{name: 'Turkmenistan', value: '214'},{name: 'Turks', value: '215'},{name: 'Tuvalu', value: '216'},{name: 'Uganda', value: '217'},{name: 'Ukraine', value: '218'},{name: 'United Arab Emirates', value: '219'},{name: 'United Kingdom', value: '220'},{name: 'United States', value: '221'},{name: 'Uruguay', value: '222'},{name: 'Uzbekistan', value: '223'},{name: 'Vanuatu', value: '224'},{name: 'Vatican City State', value: '225'},{name: 'Venezuela', value: '226'},{name: 'Vietnam', value: '227'},{name: 'Virgin Islands', value: '228'},{name: 'Wallis and Futuna', value: '229'},{name: 'Western Sahara', value: '230'},{name: 'Yemen', value: '231'},{name: 'Zambia', value: '232'},{name: 'Zimbabwe', value: '233'}];
+</script>
+
+<div id="searchcontent">
+    <div class="leftbar">
+        <!-- check also on the completeness -->
+        <div id="profilenotification" style="display: none">
+            <h1 style="margin-top:20px; margin-left:25px; font-size:20px; font-weight:bold; font-style:italic; color:#e5007e">Hi there!</h1>
+            <p style="margin-top:10px; margin-left:25px; font-size:13px; font-weight:bold; font-style:italic; color:#414042">Your profile is not 100% complete</p>
+            <p style="margin-top:10px; margin-left:25px; font-size:11px; font-weight:bold; font-style:italic; color:#58595b; width:460px;">You have not filled out all parts of your profile yet. Completing your profile increases your chances of being found by your family and friends.</p>
+            <div style="float: left; width: 480px; padding-left: 25px; margin-top: 40px">
+                <p style="float: left;">Profile completion rate:</p>
+                <div id="barholder">
+                    <div id="completitionbar"><div id="completed" style="width: 114px"><div id="bubble">38%</div></div></div>
+                    <span style="position: absolute; top: 20px; left: 0px; font-size: 14px">0%</span>
+                    <span style="position: absolute; top: 20px; right: 0px; font-size: 14px">100%</span>
+                </div>
+            </div>
+            <div id="notifclosebtn"></div>
+            <div id="completeprofilebtn"><a href="/user/editprofile" class="bigpinkbutton"><span>Complete<br />your profile</span></a></div>
+            <div id="nothanxbtn">No, thank you. Not now.</div>
+        </div>
+        <div id="searchcontainer">
+            <div id="searchheader"><img src="{{STATIC_URL}}img/redux/searchicon.png" alt="_" />Search for family and friends</div>
+            <form id="search" action="/" method="post">
+                <div id="searchstep1">
+                    <div class="searchstepheader">
+                        Are you looking for a male or a female?
+                    </div>
+                    <div class="searchstepchoice" id="searchstepchoice1">
+                        <div class="float-left searchstepchoice1-radio"><input id="gender_MALE" name="query.gender" value="MALE" type="radio" /></div>
+                        <div class="float-left searchstepchoice1-img"><img src="{{STATIC_URL}}img/redux/maleicon.png" alt="_" /></div>
+                        <div class="float-left searchstepchoice1-label"><label for="gender_MALE">Male</label></div>
+                        <div class="float-left searchstepchoice1-radio"><input id="gender_FEMALE" name="query.gender" value="FEMALE" type="radio" /></div>
+                        <div class="float-left searchstepchoice1-img"><img src="{{STATIC_URL}}img/redux/femaleicon.png" alt="_" /></div>
+                        <div class="float-left searchstepchoice1-label"><label for="gender_FEMALE">Female</label></div>
+
+                        <div style="position: absolute; right: -125px; top: -30px; width: 130px;">
+                            <div class="graybubble searchstepmatches" id="searchstep1matches">
+                               <span></span><div></div>
+                            </div>
+                            <div class="loader"></div>
+                        </div>
+                        <div class="clear" ></div>
+                    </div>
+                    <div class="searchstepinfo">
+                        Start by selecting the gender of the person you are looking for
+                    </div>
+                </div>
+
+                <div id="searchstep2" class="searchstep">
+                    <div class="searchstepheader"></div>
+                    <div class="searchstepchoice" id="searchstepchoice2">
+                        <div class="float-left input"><input id="names" name="query.names" type="text" /></div>
+                        <div id="nameselect"><a href="/" class="bluebuttonsmall"><span>Continue</span></a></div>
+                        <div style="position: absolute; right: -125px; top: -30px; width: 130px;">
+                            <div class="purplebubble searchstepmatches" id="searchstep2matches">
+                               <span></span><div></div>
+                            </div>
+                            <div class="loader"></div>
+                        </div>
+                        <div class="clear" ></div>
+                    </div>
+                    <div class="searchstepinfo">
+                        Enter the name of the person. It can be either main given name,<br />family name or nickname
+                    </div>
+                    <div id="informationbox2" class="informationbox"><p style="max-width: 200px;"></p></div>
+                </div>
+
+                <div class="searchstep" id="searchstep3">
+                    <div class="searchstepheader"></div>
+                    <div class="searchstepchoice" id="searchstepchoice3">
+                        <div class="float-left wideselect">
+                            <select id="age" name="query.age">
+                                <option value=""></option>
+                                <option value="-1">I do not know</option><option value="17">Below 18 years</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option>
+                            </select>
+                        </div>
+                        <div style="position: absolute; right: -125px; top: -30px; width: 130px;">
+                            <div class="purplebubble searchstepmatches" id="searchstep3matches">
+                               <span></span><div></div>
+                            </div>
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                    <div class="searchstepinfo" id="step3info"></div>
+                    <div id="informationbox3" class="informationbox"><p style="max-width: 200px;"></p></div>
+                </div>
+
+                <div class="searchstep" id="searchstep4">
+                    <div class="searchstepheader"></div>
+                    <div class="searchstepchoice" id="searchstepchoice4">
+                        <div class="float-left wideselect">
+                            <select id="country" name="query.countryOfBirth">
+                                <option value=""></option>
+                                <option value="-1">I do not know</option><option value="234">Afghanistan</option><option value="2">Albania</option><option value="3">Algeria</option><option value="4">American Samoa</option><option value="5">Andorra</option><option value="6">Angola</option><option value="7">Anguilla</option><option value="8">Antarctica</option><option value="9">Antigua and Barbuda</option><option value="10">Argentina</option><option value="11">Armenia</option><option value="12">Aruba</option><option value="13">Australia</option><option value="14">Austria</option><option value="15">Azerbaijan</option><option value="16">Bahamas (The)</option><option value="17">Bahrain</option><option value="18">Bangladesh</option><option value="19">Barbados</option><option value="20">Belarus</option><option value="21">Belgium</option><option value="22">Belize</option><option value="23">Benin</option><option value="24">Bermuda</option><option value="25">Bhutan</option><option value="26">Bolivia</option><option value="27">Bosnia and Herzegovina</option><option value="28">Botswana</option><option value="29">Bouvet Island</option><option value="31">Brazil</option><option value="30">Br. Indian Ocean Territory</option><option value="32">British Virgin Islands</option><option value="33">Brunei Darussalam</option><option value="34">Bulgaria</option><option value="35">Burkina Faso</option><option value="36">Burundi</option><option value="37">Cambodia</option><option value="38">Cameroon</option><option value="39">Canada</option><option value="40">Cape Verde</option><option value="41">Cayman Islands</option><option value="42">Central African Republic</option><option value="43">Chad</option><option value="44">Chile</option><option value="45">China</option><option value="46">Christmas Island</option><option value="47">Cocos Island</option><option value="48">Colombia</option><option value="49">Comoros</option><option value="61">Congo, Democratic Republic of </option><option value="50">Congo, Republic of</option><option value="51">Cook Islands</option><option value="52">Costa Rica</option><option value="53">Croatia</option><option value="54">Cuba</option><option value="55">Cyprus</option><option value="56">Czech Republic</option><option value="57">Denmark</option><option value="58">Djibouti</option><option value="59">Dominica</option><option value="60">Dominican Republic</option><option value="62">Ecuador</option><option value="63">Egypt</option><option value="64">El Salvador</option><option value="65">Equatorial Guinea</option><option value="66">Eritrea</option><option value="67">Estonia</option><option value="68">Ethiopia</option><option value="69">Falkland Islands</option><option value="70">Fiji</option><option value="71">Finland</option><option value="73">France</option><option value="74">French Guiana</option><option value="75">French Polynesia</option><option value="72">Fr. Southern Ant.Lands</option><option value="76">Gabon</option><option value="77">Gambia (The)</option><option value="78">Georgia</option><option value="79">Germany</option><option value="80">Ghana</option><option value="81">Greece</option><option value="82">Greenland</option><option value="83">Grenada</option><option value="84">Guadeloupe</option><option value="85">Guam</option><option value="86">Guatemala</option><option value="87">Guinea</option><option value="88">Guinea-Bissau</option><option value="89">Guyana</option><option value="90">Haiti</option><option value="91">Heard Is.</option><option value="92">Honduras</option><option value="93">Hungary</option><option value="94">Iceland</option><option value="95">India</option><option value="96">Indonesia</option><option value="97">Iran</option><option value="98">Iraq</option><option value="99">Ireland</option><option value="100">Israel</option><option value="101">Italy</option><option value="102">Ivory Coast</option><option value="103">Jamaica</option><option value="104">Jan Mayen</option><option value="105">Japan</option><option value="106">Jordan</option><option value="107">Kazakhstan</option><option value="108">Kenya</option><option value="109">Kiribati</option><option value="110">Kuwait</option><option value="111">Kyrgyzstan</option><option value="112">Laos</option><option value="113">Latvia</option><option value="114">Lebanon</option><option value="115">Lesotho</option><option value="116">Liberia</option><option value="117">Libya</option><option value="118">Liechtenstein</option><option value="119">Lithuania</option><option value="120">Luxembourg</option><option value="121">Macedonia</option><option value="122">Madagascar</option><option value="123">Malawi</option><option value="124">Malaysia</option><option value="125">Maldives</option><option value="126">Mali</option><option value="127">Malta</option><option value="128">Marshall Islands</option><option value="129">Martinique</option><option value="130">Mauritania</option><option value="131">Mauritius</option><option value="132">Mayotte</option><option value="133">Mexico</option><option value="134">Micronesia</option><option value="135">Moldova</option><option value="136">Monaco</option><option value="137">Mongolia</option><option value="138">Montserrat</option><option value="139">Morocco</option><option value="140">Mozambique</option><option value="141">Myanmar</option><option value="142">Namibia</option><option value="143">Nauru</option><option value="144">Nepal</option><option value="145">Netherlands</option><option value="146">Netherlands Antilles</option><option value="147">New Caledonia</option><option value="148">New Zealand</option><option value="149">Nicaragua</option><option value="150">Niger</option><option value="151">Nigeria</option><option value="152">Niue</option><option value="153">Norfolk Island</option><option value="155">Northern Mariana Islands</option><option value="154">North Korea</option><option value="156">Norway</option><option value="157">Oman</option><option value="158">Pakistan</option><option value="159">Palau</option><option value="160">Panama</option><option value="161">Papua New Guinea</option><option value="162">Paraguay</option><option value="163">Peru</option><option value="164">Philippines</option><option value="165">Pitcairn Islands</option><option value="166">Poland</option><option value="167">Portugal</option><option value="168">Puerto Rico</option><option value="169">Qatar</option><option value="170">Reunion</option><option value="171">Romania</option><option value="172">Russian Federation</option><option value="173">Rwanda</option><option value="174">Saint Helena</option><option value="175">Saint Kitts and Nevis</option><option value="176">Saint Lucia</option><option value="177">Samoa</option><option value="178">San Marino</option><option value="179">Sao Tome and Principe</option><option value="180">Saudi Arabia</option><option value="181">Senegal</option><option value="182">Serbia and Montenegro</option><option value="183">Seychelles</option><option value="184">Sierra Leone</option><option value="185">Singapore</option><option value="186">Slovakia</option><option value="187">Slovenia</option><option value="188">Soloman Islands</option><option value="189">Somalia</option><option value="190">South Africa</option><option value="191">South Georgia and the South S. Is.</option><option value="192">South Korea</option><option value="235">South Sudan</option><option value="193">Spain</option><option value="194">Sri Lanka</option><option value="195">St. Pierre and Miquelon</option><option value="196">St. Vincent</option><option value="197">Sudan</option><option value="198">Suriname</option><option value="199">Swaziland</option><option value="200">Sweden</option><option value="201">Switzerland</option><option value="202">Syria</option><option value="203">Taiwan</option><option value="204">Tajikistan</option><option value="205">Tanzania</option><option value="206">Thailand</option><option value="207">Timor-Leste</option><option value="208">Togo</option><option value="209">Tokelau</option><option value="210">Tonga</option><option value="211">Trinidad and Tobago</option><option value="212">Tunisia</option><option value="213">Turkey</option><option value="214">Turkmenistan</option><option value="215">Turks</option><option value="216">Tuvalu</option><option value="217">Uganda</option><option value="218">Ukraine</option><option value="219">United Arab Emirates</option><option value="220">United Kingdom</option><option value="221">United States</option><option value="222">Uruguay</option><option value="223">Uzbekistan</option><option value="224">Vanuatu</option><option value="225">Vatican City State</option><option value="226">Venezuela</option><option value="227">Vietnam</option><option value="228">Virgin Islands</option><option value="229">Wallis and Futuna</option><option value="230">Western Sahara</option><option value="231">Yemen</option><option value="232">Zambia</option><option value="233">Zimbabwe</option>
+                            </select>
+                        </div>
+                        <div style="position: absolute; right: -125px; top: -30px; width: 130px;">
+                            <div class="purplebubble searchstepmatches" id="searchstep4matches">
+                               <span></span><div></div>
+                            </div>
+                            <div class="loader"></div>
+                        </div>
+                        <div class="clear" ></div>
+                    </div>
+                    <div class="searchstepinfo">
+                        Select the country of birth for the person. If you do not know,<br />choose 'I do not know'.
+                    </div>
+                </div>
+
+                <div class="searchstep" id="searchstep5">
+                    <div style="border-top: 1px dashed #d6d6d6; height:1px; width:675px;"></div>
+                    <div style="position: relative; left: 20px; top: 25px; margin-bottom: 20px; ">Answer one or more questions to improve your search:</div>
+                    <div class="searchstepchoice" id="searchstepchoice5">
+                        <div style="margin-top: 5px; margin-bottom: 10px;" id="step5birthplace"></div>
+                        <div class="float-left input" style="margin-bottom: 20px;"><input id="birthPlace" style="width: 335px;" name="query.birthPlace" type="text" /></div>
+                        <div style="margin-bottom: 10px;">What is his hometown/village?</div>
+                        <div class="float-left input" style="margin-bottom: 20px;"><input id="homeTown" style="width: 335px;" name="query.homeTown" type="text" /></div>
+                        <div style="margin-bottom: 10px;" id="step5tribe"></div>
+                        <div class="float-left input" style="margin-bottom: 20px;"><input id="tribe" style="width: 335px;" name="query.tribe" type="text" /></div>
+                        <div style="margin-bottom: 10px;" id="step5siblings"></div>
+                        <div class="float-left wideselect" >
+                            <select id="familySize" name="query.familySize">
+                                <option value=""></option>
+                                <option value="-1">I do not know</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 10px;" id="step5parents"></div>
+                        <div class="float-left input"><input id="parentsNationality" style="width: 335px;" name="query.parentsNationality" type="text" /></div>
+                    </div>
+
+                    <div id="searchsubmitcont">
+                        <div id="searchupdatesubmitbtn">
+                            <a href="/" class="button-medium" id="updatesearch"><span style="font-size: 10px;">Update your search</span></a>
+                        </div>
+                        <div style="position:relative; float:left; top:10px; left: 5px;">or</div>
+
+                        <div id="searchsubmitbtn">
+                            <a href="/" class="bluebuttonsmall" id="searchsubmit"><span>View your search results</span></a>
+                        </div>
+                    </div>
+
+                    <div style="position: absolute; right: 188px; top: 48px; width: 130px;">
+                            <div class="purplebubble searchstepmatches" id="searchstep5matches">
+                               <span></span><div></div>
+                            </div>
+                            <div class="loader"></div>
+                        </div>
+                    <div class="clear" ></div>
+                </div>
+
+                <div id="searchresultsubmit">
+                    <div id="searchresulttext"></div>
+                    <div id="submitbtn">
+                        <a href="/" class="bluebutton" id="bluesubmitbtn"><span>See your search results</span></a>
+                    </div>
+                    <div id="searchresulttext2"></div>
+                    <div id="searchresultbtn2">
+                        or<div style="margin-left: 30px; margin-top: -10px;"><a href="/" class="button-medium" id="moredetails"><span>Enter more details</span></a></div>
+                    </div>
+                    <div class="clear" ></div>
+                </div>
+            <div style="display: none;"><input type="hidden" name="_sourcePage" value="OME6EnRMx4Llqysqde0Wfw34DD26wbnFvwiTq-miXbovUlOA4SM5VQ==" /><input type="hidden" name="__fp" value="w-5cIC1gCR0kXT3Vfwh2MJQVhOWUkK2hxuRU7gOmVb2nTKBm7mBcOIZ8DiHbB0Hdi7XOpTtd73g=" /></div></form>
+        </div>
+    </div>
+    <div class="rightbar">
+        
+
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+
+
+
+
+<div class="infobox" style="padding-bottom: 65px;">
+    <div>
+        <img src="{{STATIC_URL}}img/redux/dashboard.png" />
+        <span class="sidebarHeader">Your Dashboard</span>
+    </div>
+    <p style="margin-top: 10px;">You are signed in as:</p>
+    <p style="margin-top: 5px;" class="pink">Grath Loud</p>
+    <div style="position: absolute; left: 75px;margin-top: 30px;">
+        <div id="bye-bubble">Bye now</div>
+        <div>
+            <a href="/user/logout" class="button-blue-medium"><span>Sign out</span></a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theuserguid = 'ff80818136aa8b090136b4b5add00466';
+    var recieviedMesText='Received messages';
+
+    $(document).ready(function(){
+        $(document).bind("GET_MESSAGES", function(event){
+            getMessagesCount();
+        });
+        getMessagesCount();
+    });
+
+    function getMessagesCount(){
+        $.getJSON("/message/getMessagesCounts", {guid:theuserguid}, function(json) {
+            //set the data
+            var count = parseInt(json.messageCount) + parseInt(json.sentMessageCount);
+            if(count > 0)
+                $("#messagesDiv,#messagesBox").css("display","block");
+            else
+                $("#messagesDiv,#messagesBox").css("display","none");
+
+            if(json.unreadMessageCount > 0){
+                $("#newmessagelabel").css("display","block");
+                $("#nomessagelabel").css("display","none");
+            }
+            else{
+                $("#newmessagelabel").css("display","none");
+                $("#nomessagelabel").css("display","block");
+            }
+
+            var recieviedMesLbl = 'Received messages (<span style="color: #e5007e; font-weight: bold;">' + json.unreadMessageCount + ' new</span>):';
+            recieviedMesLbl += "<span style='float: right; font-weight: bold;'>"+json.messageCount+"</span>";
+
+            $("#recievedMessageLabel").html(recieviedMesLbl);
+            $("#sentMessageLabel span").html(json.sentMessageCount);
+        });
+    }
+</script>
+
+<div class="divider" id="messagesDiv" style="display: none;"></div>
+<div class="infobox" id="messagesBox" style="padding-bottom: 20px; padding-top: 20px; display:none;">
+    <div>
+        <img src="{{STATIC_URL}}img/redux/messageIcon.png" />
+        <span class="sidebarHeader">Your messages</span>
+    </div>
+    <p style="margin-top: 10px;" class="pink" id="newmessagelabel" style="display: none;">You have new messages!</p>
+    <p style="margin-top: 10px;" class="pink" id="nomessagelabel" style="display: none;">No new messages</p>
+    <p style="margin-top: 10px;" id="recievedMessageLabel"></p>
+    <p style="margin-top: 10px;" id="sentMessageLabel">Sent messages:<span style="float: right; font-weight: bold;"></span></p>
+    <p style="margin-top: 10px;"><a href="/message/messages">View message list</a></p>
+</div>
+
+<div class="divider"></div>
+<div class="infobox" style="padding-bottom: 20px; padding-top: 20px">
+    <div>
+        <img src="{{STATIC_URL}}img/redux/profileicon3.png" />
+        <span class="sidebarHeader">Your Profile</span>
+    </div>
+    <div style="margin-top: 10px; float: left; width: 60px; height: 50px;">
+        <img src="/profile/image/ff80818136aa8b090136b4b5add00466" alt="_" style="max-width: 40px; max-height: 50px;" />
+    </div>
+    <p style="margin-top: 10px; color: #ee2a7b; font-size: 12px; font-style: italic; font-weight: bold;">Grath Loud</p>
+    <p style="margin-top: 5px; color: #58595b; font-size: 12px;">Argentina</p>
+    <p style="margin-top: 5px;"><a href="#" onclick="getAndShowProfile('ff80818136aa8b090136b4b5add00466', false, false);return false;">View full profile</a></p>
+    <p style="margin-top: 15px;">Your profile completion rate:</p>
+    <div id="barholder" style="margin-top: 30px; margin-bottom: 20px; width: 200px; margin-left: 0px;">
+        <div id="completitionbar" style="height: 10px;"><div id="completed" style="height: 10px; width: 76px"><div id="bubble-small">38%</div></div></div>
+        <span style="position: absolute; top: 10px; left: 0px; font-size: 10px">0%</span>
+        <span style="position: absolute; top: 10px; right: 0px; font-size: 10px">100%</span>
+    </div>
+    <p style="margin-top: 5px;"><a href="/user/editprofile/">Edit your profile</a></p>
+</div>
+<div class="divider" style="display: none"></div>
+<div class="infobox" style="padding-bottom: 30px; padding-top: 20px; display: none">
+    <div style="float: left; width: 30px; height: 30px;">
+        <img src="{{STATIC_URL}}img/redux/staricon.png" alt="_" style="width: 20px; height: 20px;" />
+    </div>
+    <span class="sidebarHeader">Profiles you marked as interesting</span>
+    <p style="margin-top: 10px; color: #58595b; font-size: 12px; font-style: italic;">Recently added:</p>
+    <div style="margin-top: 10px; float: left; width: 60px; height: 50px;">
+        <img src="/profile/image/" alt="_" style="max-width: 40px; max-height: 50px;" />
+    </div>
+    <p style="margin-top: 10px; color: #ee2a7b; font-size: 12px; font-style: italic; font-weight: bold;"></p>
+    <p style="margin-top: 5px; color: #58595b; font-size: 12px;"></p>
+    <p style="margin-top: 5px;"><a href="#" onclick="getAndShowProfile('', true, true);return false;" id="sideBarViewProfile">View full profile</a></p>
+    <p style="margin-top: 15px; color: #58595b; font-size: 12px;">You have marked 0 profiles as interesting&nbsp;<a href="/user/favorites">View all profiles</a></p>
+</div>
+
+
+
+<div style="height: 200px;">&nbsp;</div>
+    </div>
+    <div class="clear" ></div>
+</div>
+
+<div id="modal-content" style="position: relative">
+    
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="view_profilecont" class="dialogPage">
+    <div style="height: 360px; overflow-y: auto; overflow-x: hidden;">
+        <img id="view_profileImage" alt="profileImage" src="" style="max-width:91px; max-height: 113px; float: left;"/>
+        <div style="width: 270px; float: left; border-right: 1px dashed #d6d6d6; margin-left: 15px;">
+            <div style="font-size:13px; font-weight:bold; color:#58595b; width: 260px;" id="viewProfile_FullName"></div>
+            <div style="margin-top:5px;">
+                <div class="profileleftlabels">Nickname(s)</div>
+                <div class="profilelefttext"  id="viewProfile_NickName"></div>
+                <div style="clear:both"></div>
+            </div>
+            <div style="margin-top:10px;">
+                <div class="profileleftlabels">Age</div>
+                <div class="profilelefttext" id="viewProfile_Age"></div>
+                <div style="clear:both"></div>
+            </div>
+            <div style="margin-top:3px;">
+                <div class="profileleftlabels">Country of birth</div>
+                <div class="profilelefttext"  id="viewProfile_Country"></div>
+                <div style="clear:both"></div>
+            </div>
+            <div style="margin-top:10px;">
+                <div class="profileleftlabels">Gender</div>
+                <div class="profilelefttext" id="viewProfile_GenderContainer">
+                    <img src="{{STATIC_URL}}img/redux/femaleicon.png" alt="_" style="padding-right:10px; vertical-align:middle;" id="viewProfile_Gender"/>
+                    <span id="viewProfile_GenderText">alma</span>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div id="profileControls" style="float: left; width: 200px; margin-left: 30px;">
+            <div style="margin-top: 10px; font-size:11px; font-style:italic; width: 200px;"><img id="markicon" src="{{STATIC_URL}}img/redux/emptystaricon.png" alt="_" style="padding-right:5px; vertical-align:middle;" /><a href="/" id="markBtn">Mark profile as interesting</a></div>
+            <div style="margin-top: 20px;">
+                <div id="contactbtn">
+                    <a href="/" class="bluebutton" id="bluecontactbtn"><span>Contact this person</span></a>
+                </div>
+            <div style="clear:both; margin-top: 10px; font-size: 11px; font-style: italic;"><img src="{{STATIC_URL}}img/redux/flag.png" alt="_" style="padding-right:5px; vertical-align:middle;" /><a href="/" id="reportLink">Report abuse</a></div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="viewprofile_row" id="row1" >
+            <div class="firstcolumn">
+                <p class="viewprofile_textrowheaders">Hometown/village:</p>
+                <p class="viewprofile_textrow" id="viewProfile_Hometown"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Tribe/clan:</p>
+                <p class="viewprofile_textrow" id="viewProfile_Tribe"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Occupation:</p>
+                <p class="viewprofile_textrow" id="viewProfile_occupation"></p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="viewprofile_row" id="row2" >
+            <div class="firstcolumn">
+                <p class="viewprofile_textrowheaders">Parents' hometown:</p>
+                <p class="viewprofile_textrow" id="viewProfile_Parenthometown"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Number of siblings:</p>
+                <p class="viewprofile_textrow" id="viewProfile_Siblings"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Birth order:</p>
+                <p class="viewprofile_textrow" id="viewProfile_lineage"></p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="viewprofile_row" id="row3" >
+            <div class="firstcolumn">
+                <p class="viewprofile_textrowheaders">Favourite food:</p>
+                <p class="viewprofile_textrow" id="viewProfile_FavoriteFood"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Favourite song/sports team/colour:</p>
+                <p class="viewprofile_textrow" id="viewProfile_FavoriteSong"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Last saw family/friends at/in:</p>
+                <p class="viewprofile_textrow" id="viewProfile_Lastseen"></p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="viewprofile_row" id="row4" >
+            <div class="firstcolumn" >
+                <p class="viewprofile_textrowheaders">Other information:</p>
+                <p class="viewprofile_textrow"  id="viewProfile_Otherinfo"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">School or place of worship:</p>
+                <p class="viewprofile_textrow" id="viewProfile_FavoritePlace"></p>
+            </div>
+            <div class="column">
+                <p class="viewprofile_textrowheaders">Significant scars and/or birthmarks:</p>
+                <p class="viewprofile_textrow" id="viewProfile_physicalTraits"></p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div class="viewprofile_row" style="top:120px; height: 175px; display: none;" id="reportBox" >
+            <div style="padding: 5px; background-color: #169acc; color: #fff; font-size: 12px; font-weight: bold; display: inline-block; ">
+                <img src="{{STATIC_URL}}img/redux/whiteflag.png" alt="_" style="padding-right:5px; vertical-align:middle;" /><span>Report abuse</span>
+            </div>
+            <div style="clear: both; height: 10px;" ></div>
+            <div style="font-size: 11px; color: #808285; width: 335px;">You are about to report abuse on this profile. Abuse should be reported if you think that this profile is doing something that are against the rules of RefUnited... E.g. that the profle is fake.</div>
+            <div style="clear: both; height: 10px;" ></div>
+            <div style="font-size: 11px; color: #414042; width: 335px;">Please describe why you think this is abuse and then click “Send abuse report”.</div>
+            <div id="errorText" style="position: absolute; left: 400px; top: 30px; color: red; visibility: hidden;">
+                An error occured, please try again.
+            </div>
+            <div style="position: absolute; right: 0; top: 50px;">
+                <textarea id="abuseText" rows="6" cols="30"></textarea>
+            </div>
+            <div id="reportSubmit" style="position: absolute; right: 0; top: 180px;">
+                <div style="position: relative; font-size: 11px; font-style: italic; text-decoration: underline; color: #169acc; float: left; padding-top: 5px; padding-right: 10px; cursor: pointer;" id="abuseCancel">Cancel</div>
+                <div style="position: relative; float: left;"><a href="/" class="bluebuttonsmall" id="bluereportSubmit" ><span>Send abuse report</span></a></div>
+            </div>
+        </div>
+        <div class="viewprofile_row" style="top:120px; height: 200px; display: none;" id="contactBox" >
+            <p style="float: left; padding-top: 5px; padding-right: 10px; font-size: 11px; color: #58595b; font-weight: bold; font-style: italic; display: inline-block;">Subject</p>
+            <div class="float-left input"><input type="text" id="replySubject"/></div>
+            <textarea style="width: 630px; height: 100px; float: left;" rows="8" cols="76" id="replyText"></textarea>
+            <div style="clear: both; height: 1px; margin-top: -1px;">&nbsp;</div>
+            <img src="{{STATIC_URL}}img/redux/exclamation.png" alt="_" style="float: left; padding-top: 10px; margin-right: 10px;" />
+            <div style="float: left;">
+                <h4 style="padding-top: 10px; font-size: 13px; color: #58595b; font-weight: bold; font-style: italic; display: inline-block;">Stay safe</h4>
+                <div style="clear: both; height: 1px; margin-top: -1px;">&nbsp;</div>
+                <p style="font-size: 10px; color: #808285; font-style: italic; display: inline-block; width: 460px;">Please do not give away any sensitive information (for instance, your current address) until you are certain that the person you're communicating with is who they say they are.</p>
+            </div>
+            <div style="float: right;">
+                <div style="position:relative; top: 10px; display: inline-block;"><a href="#" class="button-small" id="replyBtn"><span>Send message</span></a></div>
+                <div style="clear: both; height: 1px; margin-top: -1px;">&nbsp;</div>
+                <a href="#" style="float: right; padding-top: 10px; display: inline-block;" id="replyCancel">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+            </div>
+        </div>
+        <div id="footerwrap">
+            <div id="footer">
+                <div id="footerlogoleft"><a href="/"></a></div>
+                <div id="footertext">© Copyright 2005-2011 Refugees United. All rights reserved Refugees United is a U.S. 501(c)(3) tax exempt organization</div>
+                <div id="footerprivacy"><a href="https://info.refunite.org/content/privacy-policy">Privacy policy</a></div>
+                <div id="footerlogoright"><a href="/"><img src="{{STATIC_URL}}img/redux/footerlogoright.png" /></a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

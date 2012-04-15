@@ -1,0 +1,1269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Refugees United</title>
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/uniform.css" />
+        <!--[if IE 7]>
+            <link rel="stylesheet" type="text/css" href="/css/ie7.css">
+        <![endif]-->
+        <style type="text/css">
+            .langselect div.selector{
+                width:208px;
+            }
+            .langselect div.selector select{
+                width:200px;
+            }
+            .langselect div.selector span{
+                width:180px;
+            }
+        </style>
+
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/uniform.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/landingcontent.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/buttons.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/inputs.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://78.109.215.13:8080/css/modal.css" />
+
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js" ></script>
+        <script type="text/javascript">
+            $('document').ready(function() {
+                $('#language-select').change(function(){
+                    location.href = '/user/language/' + $('#language-select option:selected').val();
+                    return false;
+                });
+
+                var lang = 'en';
+                $('#language-select').val(lang);
+                return false;
+            });
+
+        </script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.uniform.min.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/landing.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.simplemodal.js"></script>
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/spin.min.js"></script>
+
+    </head>
+    <body>
+    <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=151761074867923";
+                  fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+        </script>
+    <div id="wrapper">
+        <div id="header">
+            <div id="headerlogo"><a href="/search"><img src="{{STATIC_URL}}img/headerlogo.png" alt="Refugees United - reuniting loved ones" /></a></div>
+            <div id="headerlinks">
+                <div class="fb-like" data-href="http://www.facebook.com/refunite" data-send="false" data-layout="button_count" data-show-faces="false" style="padding-top: 3px"></div>
+                <a href="/page/about_us"><img src="/{{STATIC_URL}}img/redux/linksq.png" class="linksquare" />About us</a>
+            </div>
+            <div id="headerlanguage">
+                <div id="headerlanguageimg">
+                    <img src="{{STATIC_URL}}img/redux/headerworld.png" alt="Choose Language" />
+                </div>
+                <div id="headerlanguageselect" class="langselect">
+                    <select id="language-select">
+                      
+<option>More languages coming soon..</option>
+<option value="en">English</option>
+<option value="ar">العربية</option>
+<option value="fr">Français</option>
+<option value="so">Soomaaliga</option>
+<option value="sw">Swahili</option>
+<option value="pt">Português</option>
+<option value="es">Español</option>
+
+
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="contentwrap">
+            <div id="content">
+
+
+
+<script type="text/javascript">
+    passwordWarning = 'Looks like you misspelled your password, because the two words do not match. Try typing your password again.';
+    passwordRequestFeedback = 'Your password was sent to';
+    passwordRequestError = 'Could not send your password. Please try again later.';
+</script>
+
+<div id="landingcontent">
+    <div id="landingheader">Find missing family and friends in 3 easy steps</div>
+    <div id="createprofile">
+        <div id="landingstep1">CREATE<br />A PROFILE</div>
+        <div id="landingstepdiv1"></div>
+        <div id="landingstep2">SEARCH FOR YOUR<br />MISSING FAMILY AND FRIENDS</div>
+        <div id="landingstepdiv2"></div>
+        <div id="landingstep3">FIND YOUR<br />FAMILY AND FRIENDS</div>
+
+        <div id="createbtn">Create a profile<br />and start your search</div>
+        <div id="createbtnnotif"><span>Click here</span></div>
+    </div>
+    <div id="signin">
+        <h1>Do you already have a profile?</h1>
+        <p>Sign in here:</p>
+        <form id="login-form" action="/user/auth" method="post">
+            <div style="margin-bottom:5px;">
+                <div style="float: left; width: 100px; font-size: 13px; color: #58595B;">Your username:</div>
+                <div style="float: left; width: 180px">
+                    <div class="input">
+                        <input id="username" name="username" type="text" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div>
+                <div style="float: left; width: 100px; font-size: 13px; color: #58595B;">Your password:</div>
+                <div style="float: left; width: 180px">
+                    <div class="input">
+                        <input id="password" name="password" type="password" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="submit">
+                <a href="#" onclick="$('#login-form').submit();" class="button-medium" rel="#login-form"><span>Continue</span></a>
+            </div>
+        <div style="display: none;"><input type="hidden" name="_sourcePage" value="bi02nb2Xy9ayFPM1BGXdzw==" /><input type="hidden" name="__fp" value="A-MLTfABKmo=" /></div></form>
+        <div id="forgot">
+            <p>
+                Forgot your password?&nbsp;<a href="#" onclick="showPopup()">Click here</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="about" style="width: 380px;">
+        <h1>What is Refugees United?</h1>
+        <p>We are an organisation that offers a safe, secure and anonymous way to find family and friends that you have lost contact with. This service is <span>FREE</span> of charge.</p>
+        <p>Using our search tool, you are able to look for missing friends and family, even though you are far from home. At the same time you make it possible for them to find you.</p>
+        <p><a href="/page/about_us">Read more</a></p>
+    </div>
+
+     <!-- modal content -->
+    <div id="signup-modal-content" style="position: relative">
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="step_1" class="signupStep" >
+            <h2>Create your free profile here</h2>
+            <div style="position: absolute; top: 0px; right:0px"><img src="{{STATIC_URL}}img/redux/1234_1.png" alt="first step"/></div>
+            <div class="hr" ></div>
+            <div class="leftBar">
+                <h3>Your contact information</h3>
+                <p style="width: 475px; margin-top: 3px">In order to create a profile, you need to have an e-mail address or a mobile phone. We need this information, so we can notify you if you are contacted by other users of the search tool.</p>
+                <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>Do you have an e-mail address?</p>
+                <div class="group dashed" id="emailGroup">
+                    <span class="radioyes"><input type="radio" name="email" id="email_yes" value="yes"/><span class="radiolabel">Yes</span></span>
+                    <span class="radiono"><input type="radio" name="email" id="email_no" value="no"/><span class="radiolabel">No</span></span>
+                    <div class="clear" ></div>
+                    <div id="emailInput" style="display: none;">
+                        <div style="position: relative; height: 30px;" id="emailTextFields">
+                            <div class="darkinput" style="position: absolute; top:10px; left: 0px;">
+                                <input type="text" name="emailText" id="emailText" style="width: 210px"/>
+                            </div>
+                            <div class="darkinput" style="position: absolute; top: 10px; left: 230px;">
+                                <input type="text" name="emailTextRepeat" id="emailTextRepeat" style="width: 210px"/>
+                            </div>
+                        </div>
+                        <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><span><img src="{{STATIC_URL}}img/redux/arrowup.png" />What is your e-mail address?</span><span style="margin-left: 80px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />Enter e-mail again to verify spelling</span></div>
+                    </div>
+                </div>
+                <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>Do you have a mobile phone?</p>
+                <div class="group dashed" id="mobileGroup">
+                    <span class="radioyes"><input type="radio" name="mobile" id="mobile_yes" value="yes"/><span class="radiolabel">Yes</span></span>
+                    <span class="radiono"><input type="radio" name="mobile" id="mobile_no" value="no"/><span class="radiolabel">No</span></span>
+                    <div class="clear" ></div>
+                    <div id="mobileInput" style="display: none;">
+                        <div style="position: relative; height: 30px;" id="mobileTextField">
+                            <div class="darkinput" style="position: absolute; top:10px; left: 0px;">
+                                <input type="text" name="phoneText" id="phoneText" style="width: 210px"/>
+                            </div>
+                        </div>
+                        <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />What is your mobile phone number?</div>
+                    </div>
+                    <div class="clear" ></div>
+                </div>
+                <div id="warning_1" class="warning" style="margin-top: 30px">
+                    <img src="{{STATIC_URL}}img/redux/bigmark.png" style="position: absolute; top:10px; left: 20px"/>
+                    <div style="margin-left: 30px">We highly recommend that you enter an e-mail address or mobile phone number before you continue. If you forget your password we can reset it via your email.</div>
+                </div>
+            </div>
+            <div class="rightBar">
+                <div class="dashed" style="position: relative; padding: 20px;">
+                    <div style="position: absolute; right: -1px; top: 0px"><img src="{{STATIC_URL}}img/redux/mark.png" /></div>
+                    <p style="padding-right: 20px;">Your contact information will<span class="darkText">&nbsp;NOT&nbsp;</span>be shared with anyone. It will only be used by Refugees United to notify you if someone writes you a message.</p>
+                    <p style="margin-top: 20px" class="darkText">No mobile phone or e-mail?</p>
+                    <p style="margin-top: 3px">If you do not have a mobile phone or an e-mail, it is still possible to create a profile. But please beware that you will then have to check the system for new messages yourself.</p>
+                    <p style="margin-top: 20px">If you would like an e-mail address, you can create one for free at gmail.com.</p>
+                    <p style="margin-top: 3px"><a href="http://www.gmail.com" target="_blank" style="font-weight: bold;">Go to gmail.com</a></p>
+                </div>
+            </div>
+            <div class="clear" ></div>
+            <div style="position: absolute; bottom: 0px; width: 833px">
+                <div id="pleasenote_top"></div>
+                <div style="background: #ffffff; padding-left: 25px;">
+                    <p class="darkText" style="font-style: italic; font-weight: bold; font-size: 12px;">PLEASE NOTE:</p>
+                    <p style="font-size: 11px; font-style: italic; padding-top: 5px;" >We do not recommend using the search tool if you are at risk of being traced by potential persecutors.</p>
+                    <p style="font-size: 11px; font-style: italic; padding-top: 8px; padding-bottom: 5px">By continuing the creation of your profile, you agree to our <a href="/page/termsofuse" target="_blank" style="font-weight: bold">Terms of Use</a></p>
+                    <div style="position: absolute; top:20px; right: 20px;">
+                        <div class="submit" id="continue_1">
+                            <a href="#" class="button-big"><span>Continue</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="pleasenote_bottom"></div>
+            </div>
+</div>
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="step_2" class="signupStep" >
+            <h2>Create your free profile here</h2>
+            <div style="position: absolute; top: 0px; right:0px"><img src="{{STATIC_URL}}img/redux/1234_2.png" alt="first step"/></div>
+            <div class="hr" ></div>
+            <div class="leftBar">
+                <h3>Your name</h3>
+                <p style="width: 475px; margin-top: 3px">In order to make it easy for your family and friends to find you, please enter your name and possible nicknames.</p>
+                <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What is your main given name?</p>
+                <div class="group dashed" id="mainNameGroup">
+                    <div style="position: relative; height: 27px;">
+                        <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                            <input type="text" name="mainName" id="mainName" style="width: 435px"/>
+                        </div>
+                    </div>
+                    <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />Enter your primary personal name. If you have more than one given name, you may enter several names.</div>
+                </div>
+                <div class="warning" id="profileWarning" style="display: none;margin-top: 10px">
+                    <img src="{{STATIC_URL}}img/redux/bigmark.png" style="position: absolute; top:10px; left: 20px"/>
+                    <div style="margin-left: 30px">There are <span id="profileCount"></span> profiles with the name '<span id="profileName"></span>'. In order for you to be recognised by family and friends, we recommend adding your family name and nickname. If you do not wish to do so, click 'Continue'.</div>
+                </div>
+                <p class="question" style="margin-top: 10px"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What is your family name?</p>
+                <div class="group dashed">
+                    <div style="position: relative; height: 27px;">
+                        <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                            <input type="text" name="familyName" id="familyName" style="width: 435px"/>
+                        </div>
+                    </div>
+                </div>
+                <p class="question" style="margin-top: 10px"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What is your nickname?</p>
+                <div class="group dashed">
+                    <div style="position: relative; height: 27px;">
+                        <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                            <input type="text" name="nickName" id="nickName" style="width: 435px"/>
+                        </div>
+                    </div>
+                    <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />If you have more than one nickname, simply separate all names with a space.</div>
+                </div>
+            </div>
+            <div class="rightBar">
+                <div class="dashed" style="position: relative; padding: 20px;">
+                    <div style="position: absolute; right: -1px; top: 0px"><img src="{{STATIC_URL}}img/redux/mark.png" /></div>
+                    <p style="padding-right: 20px;">It is a good idea to enter nicknames (if you have any). This way, it is easier for your family and friends to identify you when they make a search.</p>
+                    <p style="margin-top: 20px">If someone finds you in a search, these names will be shown to them. Use nicknames or information only known by your family and friends.</p>
+                </div>
+            </div>
+            <div class="clear" ></div>
+            <div style="position: absolute; bottom:15px; right: 20px;">
+                <div class="submit">
+                    <a href="#" id="previous_2" style="font-style: italic; font-size: 11px; font-weight: bold;color: #169acc; margin-right: 20px;text-decoration: underline">Previous page</a>
+                    <a href="#" id="continue_2" class="button-big" style="display: inline-block;"><span>Continue</span></a>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+
+<div id="step_3" class="signupStep" >
+            <h2>Create your free profile here</h2>
+            <div style="position: absolute; top: 0px; right:0px"><img src="{{STATIC_URL}}img/redux/1234_3.png" alt="first step"/></div>
+            <div class="hr" ></div>
+            <div class="leftBar">
+                <h3>Your age and gender</h3>
+                <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>How old are you?</p>
+                <div class="group dashed" style="height: 35px;">
+                    <div class="wideselect" style="float:left">
+                        <select name="age" id="ageSelector" onchange="$.uniform.update('#ageSelector');">
+                            <option value="to_remove">Choose your age in the drop-down list</option>
+                            
+                                 <option value="-1">I do not know</option>
+                            
+                                 <option value="17">Below 18 years</option>
+                            
+                                 <option value="18">18</option>
+                            
+                                 <option value="19">19</option>
+                            
+                                 <option value="20">20</option>
+                            
+                                 <option value="21">21</option>
+                            
+                                 <option value="22">22</option>
+                            
+                                 <option value="23">23</option>
+                            
+                                 <option value="24">24</option>
+                            
+                                 <option value="25">25</option>
+                            
+                                 <option value="26">26</option>
+                            
+                                 <option value="27">27</option>
+                            
+                                 <option value="28">28</option>
+                            
+                                 <option value="29">29</option>
+                            
+                                 <option value="30">30</option>
+                            
+                                 <option value="31">31</option>
+                            
+                                 <option value="32">32</option>
+                            
+                                 <option value="33">33</option>
+                            
+                                 <option value="34">34</option>
+                            
+                                 <option value="35">35</option>
+                            
+                                 <option value="36">36</option>
+                            
+                                 <option value="37">37</option>
+                            
+                                 <option value="38">38</option>
+                            
+                                 <option value="39">39</option>
+                            
+                                 <option value="40">40</option>
+                            
+                                 <option value="41">41</option>
+                            
+                                 <option value="42">42</option>
+                            
+                                 <option value="43">43</option>
+                            
+                                 <option value="44">44</option>
+                            
+                                 <option value="45">45</option>
+                            
+                                 <option value="46">46</option>
+                            
+                                 <option value="47">47</option>
+                            
+                                 <option value="48">48</option>
+                            
+                                 <option value="49">49</option>
+                            
+                                 <option value="50">50</option>
+                            
+                                 <option value="51">51</option>
+                            
+                                 <option value="52">52</option>
+                            
+                                 <option value="53">53</option>
+                            
+                                 <option value="54">54</option>
+                            
+                                 <option value="55">55</option>
+                            
+                                 <option value="56">56</option>
+                            
+                                 <option value="57">57</option>
+                            
+                                 <option value="58">58</option>
+                            
+                                 <option value="59">59</option>
+                            
+                                 <option value="60">60</option>
+                            
+                                 <option value="61">61</option>
+                            
+                                 <option value="62">62</option>
+                            
+                                 <option value="63">63</option>
+                            
+                                 <option value="64">64</option>
+                            
+                                 <option value="65">65</option>
+                            
+                                 <option value="66">66</option>
+                            
+                                 <option value="67">67</option>
+                            
+                                 <option value="68">68</option>
+                            
+                                 <option value="69">69</option>
+                            
+                                 <option value="70">70</option>
+                            
+                                 <option value="71">71</option>
+                            
+                                 <option value="72">72</option>
+                            
+                                 <option value="73">73</option>
+                            
+                                 <option value="74">74</option>
+                            
+                                 <option value="75">75</option>
+                            
+                                 <option value="76">76</option>
+                            
+                                 <option value="77">77</option>
+                            
+                                 <option value="78">78</option>
+                            
+                                 <option value="79">79</option>
+                            
+                                 <option value="80">80</option>
+                            
+                                 <option value="81">81</option>
+                            
+                                 <option value="82">82</option>
+                            
+                                 <option value="83">83</option>
+                            
+                                 <option value="84">84</option>
+                            
+                                 <option value="85">85</option>
+                            
+                                 <option value="86">86</option>
+                            
+                                 <option value="87">87</option>
+                            
+                                 <option value="88">88</option>
+                            
+                                 <option value="89">89</option>
+                            
+                                 <option value="90">90</option>
+                            
+                                 <option value="91">91</option>
+                            
+                                 <option value="92">92</option>
+                            
+                                 <option value="93">93</option>
+                            
+                                 <option value="94">94</option>
+                            
+                                 <option value="95">95</option>
+                            
+                                 <option value="96">96</option>
+                            
+                                 <option value="97">97</option>
+                            
+                                 <option value="98">98</option>
+                            
+                                 <option value="99">99</option>
+                            
+                                 <option value="100">100</option>
+                            
+                                 <option value="101">101</option>
+                            
+                                 <option value="102">102</option>
+                            
+                                 <option value="103">103</option>
+                            
+                                 <option value="104">104</option>
+                            
+                                 <option value="105">105</option>
+                            
+                                 <option value="106">106</option>
+                            
+                                 <option value="107">107</option>
+                            
+                                 <option value="108">108</option>
+                            
+                                 <option value="109">109</option>
+                            
+                                 <option value="110">110</option>
+                            
+                                 <option value="111">111</option>
+                            
+                                 <option value="112">112</option>
+                            
+                                 <option value="113">113</option>
+                            
+                                 <option value="114">114</option>
+                            
+                                 <option value="115">115</option>
+                            
+                                 <option value="116">116</option>
+                            
+                                 <option value="117">117</option>
+                            
+                                 <option value="118">118</option>
+                            
+                                 <option value="119">119</option>
+                            
+                                 <option value="120">120</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <p class="question" style="margin-top: 10px"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What is your gender?</p>
+                <div class="group dashed" id="genderGroup">
+                    <div style="float: left;  position: relative; top: 7px;"><input type="radio" name="gender" value="male"/><span style="position: relative; top: -7px;"><img src="{{STATIC_URL}}img/redux/maleicon.png" /></span><span style="position: relative; top: -14px; left: 5px;">Male</span></div>
+                    <div style="float: left; margin-left: 50px; position: relative; top: 7px;"><input type="radio" name="gender" value="female"/><span style="position: relative; top: -7px;"><img src="{{STATIC_URL}}img/redux/femaleicon.png" /></span><span style="position: relative; top: -14px; left: 5px;">Female</span></div>
+                    <div style="float: left; margin-left: 50px; position: relative; top: 7px;"><input type="radio" name="gender" value="secret"/><span style="position: relative; top: 1px;"><img src="{{STATIC_URL}}img/redux/secreticon.png" /></span><span style="position: relative; left:5px; top:-2px">Keep secret</span></div>
+                    <div class="clear" ></div>
+                </div>
+                <p class="question" style="margin-top: 10px"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>In which country were you born?</p>
+                <div class="group dashed" style="height: 35px;">
+                    <div class="wideselect" style="float:left">
+                        <select name="country" id="countrySelector"  onchange="$.uniform.update('#countrySelector');">
+                            <option value="to_remove">Choose your country of birth in the drop-down list</option>
+                            
+                                 <option value="234">Afghanistan</option>
+                            
+                                 <option value="2">Albania</option>
+                            
+                                 <option value="3">Algeria</option>
+                            
+                                 <option value="4">American Samoa</option>
+                            
+                                 <option value="5">Andorra</option>
+                            
+                                 <option value="6">Angola</option>
+                            
+                                 <option value="7">Anguilla</option>
+                            
+                                 <option value="8">Antarctica</option>
+                            
+                                 <option value="9">Antigua and Barbuda</option>
+                            
+                                 <option value="10">Argentina</option>
+                            
+                                 <option value="11">Armenia</option>
+                            
+                                 <option value="12">Aruba</option>
+                            
+                                 <option value="13">Australia</option>
+                            
+                                 <option value="14">Austria</option>
+                            
+                                 <option value="15">Azerbaijan</option>
+                            
+                                 <option value="16">Bahamas (The)</option>
+                            
+                                 <option value="17">Bahrain</option>
+                            
+                                 <option value="18">Bangladesh</option>
+                            
+                                 <option value="19">Barbados</option>
+                            
+                                 <option value="20">Belarus</option>
+                            
+                                 <option value="21">Belgium</option>
+                            
+                                 <option value="22">Belize</option>
+                            
+                                 <option value="23">Benin</option>
+                            
+                                 <option value="24">Bermuda</option>
+                            
+                                 <option value="25">Bhutan</option>
+                            
+                                 <option value="26">Bolivia</option>
+                            
+                                 <option value="27">Bosnia and Herzegovina</option>
+                            
+                                 <option value="28">Botswana</option>
+                            
+                                 <option value="29">Bouvet Island</option>
+                            
+                                 <option value="31">Brazil</option>
+                            
+                                 <option value="30">Br. Indian Ocean Territory</option>
+                            
+                                 <option value="32">British Virgin Islands</option>
+                            
+                                 <option value="33">Brunei Darussalam</option>
+                            
+                                 <option value="34">Bulgaria</option>
+                            
+                                 <option value="35">Burkina Faso</option>
+                            
+                                 <option value="36">Burundi</option>
+                            
+                                 <option value="37">Cambodia</option>
+                            
+                                 <option value="38">Cameroon</option>
+                            
+                                 <option value="39">Canada</option>
+                            
+                                 <option value="40">Cape Verde</option>
+                            
+                                 <option value="41">Cayman Islands</option>
+                            
+                                 <option value="42">Central African Republic</option>
+                            
+                                 <option value="43">Chad</option>
+                            
+                                 <option value="44">Chile</option>
+                            
+                                 <option value="45">China</option>
+                            
+                                 <option value="46">Christmas Island</option>
+                            
+                                 <option value="47">Cocos Island</option>
+                            
+                                 <option value="48">Colombia</option>
+                            
+                                 <option value="49">Comoros</option>
+                            
+                                 <option value="61">Congo, Democratic Republic of </option>
+                            
+                                 <option value="50">Congo, Republic of</option>
+                            
+                                 <option value="51">Cook Islands</option>
+                            
+                                 <option value="52">Costa Rica</option>
+                            
+                                 <option value="53">Croatia</option>
+                            
+                                 <option value="54">Cuba</option>
+                            
+                                 <option value="55">Cyprus</option>
+                            
+                                 <option value="56">Czech Republic</option>
+                            
+                                 <option value="57">Denmark</option>
+                            
+                                 <option value="58">Djibouti</option>
+                            
+                                 <option value="59">Dominica</option>
+                            
+                                 <option value="60">Dominican Republic</option>
+                            
+                                 <option value="62">Ecuador</option>
+                            
+                                 <option value="63">Egypt</option>
+                            
+                                 <option value="64">El Salvador</option>
+                            
+                                 <option value="65">Equatorial Guinea</option>
+                            
+                                 <option value="66">Eritrea</option>
+                            
+                                 <option value="67">Estonia</option>
+                            
+                                 <option value="68">Ethiopia</option>
+                            
+                                 <option value="69">Falkland Islands</option>
+                            
+                                 <option value="70">Fiji</option>
+                            
+                                 <option value="71">Finland</option>
+                            
+                                 <option value="73">France</option>
+                            
+                                 <option value="74">French Guiana</option>
+                            
+                                 <option value="75">French Polynesia</option>
+                            
+                                 <option value="72">Fr. Southern Ant.Lands</option>
+                            
+                                 <option value="76">Gabon</option>
+                            
+                                 <option value="77">Gambia (The)</option>
+                            
+                                 <option value="78">Georgia</option>
+                            
+                                 <option value="79">Germany</option>
+                            
+                                 <option value="80">Ghana</option>
+                            
+                                 <option value="81">Greece</option>
+                            
+                                 <option value="82">Greenland</option>
+                            
+                                 <option value="83">Grenada</option>
+                            
+                                 <option value="84">Guadeloupe</option>
+                            
+                                 <option value="85">Guam</option>
+                            
+                                 <option value="86">Guatemala</option>
+                            
+                                 <option value="87">Guinea</option>
+                            
+                                 <option value="88">Guinea-Bissau</option>
+                            
+                                 <option value="89">Guyana</option>
+                            
+                                 <option value="90">Haiti</option>
+                            
+                                 <option value="91">Heard Is.</option>
+                            
+                                 <option value="92">Honduras</option>
+                            
+                                 <option value="93">Hungary</option>
+                            
+                                 <option value="94">Iceland</option>
+                            
+                                 <option value="95">India</option>
+                            
+                                 <option value="96">Indonesia</option>
+                            
+                                 <option value="97">Iran</option>
+                            
+                                 <option value="98">Iraq</option>
+                            
+                                 <option value="99">Ireland</option>
+                            
+                                 <option value="100">Israel</option>
+                            
+                                 <option value="101">Italy</option>
+                            
+                                 <option value="102">Ivory Coast</option>
+                            
+                                 <option value="103">Jamaica</option>
+                            
+                                 <option value="104">Jan Mayen</option>
+                            
+                                 <option value="105">Japan</option>
+                            
+                                 <option value="106">Jordan</option>
+                            
+                                 <option value="107">Kazakhstan</option>
+                            
+                                 <option value="108">Kenya</option>
+                            
+                                 <option value="109">Kiribati</option>
+                            
+                                 <option value="110">Kuwait</option>
+                            
+                                 <option value="111">Kyrgyzstan</option>
+                            
+                                 <option value="112">Laos</option>
+                            
+                                 <option value="113">Latvia</option>
+                            
+                                 <option value="114">Lebanon</option>
+                            
+                                 <option value="115">Lesotho</option>
+                            
+                                 <option value="116">Liberia</option>
+                            
+                                 <option value="117">Libya</option>
+                            
+                                 <option value="118">Liechtenstein</option>
+                            
+                                 <option value="119">Lithuania</option>
+                            
+                                 <option value="120">Luxembourg</option>
+                            
+                                 <option value="121">Macedonia</option>
+                            
+                                 <option value="122">Madagascar</option>
+                            
+                                 <option value="123">Malawi</option>
+                            
+                                 <option value="124">Malaysia</option>
+                            
+                                 <option value="125">Maldives</option>
+                            
+                                 <option value="126">Mali</option>
+                            
+                                 <option value="127">Malta</option>
+                            
+                                 <option value="128">Marshall Islands</option>
+                            
+                                 <option value="129">Martinique</option>
+                            
+                                 <option value="130">Mauritania</option>
+                            
+                                 <option value="131">Mauritius</option>
+                            
+                                 <option value="132">Mayotte</option>
+                            
+                                 <option value="133">Mexico</option>
+                            
+                                 <option value="134">Micronesia</option>
+                            
+                                 <option value="135">Moldova</option>
+                            
+                                 <option value="136">Monaco</option>
+                            
+                                 <option value="137">Mongolia</option>
+                            
+                                 <option value="138">Montserrat</option>
+                            
+                                 <option value="139">Morocco</option>
+                            
+                                 <option value="140">Mozambique</option>
+                            
+                                 <option value="141">Myanmar</option>
+                            
+                                 <option value="142">Namibia</option>
+                            
+                                 <option value="143">Nauru</option>
+                            
+                                 <option value="144">Nepal</option>
+                            
+                                 <option value="145">Netherlands</option>
+                            
+                                 <option value="146">Netherlands Antilles</option>
+                            
+                                 <option value="147">New Caledonia</option>
+                            
+                                 <option value="148">New Zealand</option>
+                            
+                                 <option value="149">Nicaragua</option>
+                            
+                                 <option value="150">Niger</option>
+                            
+                                 <option value="151">Nigeria</option>
+                            
+                                 <option value="152">Niue</option>
+                            
+                                 <option value="153">Norfolk Island</option>
+                            
+                                 <option value="155">Northern Mariana Islands</option>
+                            
+                                 <option value="154">North Korea</option>
+                            
+                                 <option value="156">Norway</option>
+                            
+                                 <option value="157">Oman</option>
+                            
+                                 <option value="158">Pakistan</option>
+                            
+                                 <option value="159">Palau</option>
+                            
+                                 <option value="160">Panama</option>
+                            
+                                 <option value="161">Papua New Guinea</option>
+                            
+                                 <option value="162">Paraguay</option>
+                            
+                                 <option value="163">Peru</option>
+                            
+                                 <option value="164">Philippines</option>
+                            
+                                 <option value="165">Pitcairn Islands</option>
+                            
+                                 <option value="166">Poland</option>
+                            
+                                 <option value="167">Portugal</option>
+                            
+                                 <option value="168">Puerto Rico</option>
+                            
+                                 <option value="169">Qatar</option>
+                            
+                                 <option value="170">Reunion</option>
+                            
+                                 <option value="171">Romania</option>
+                            
+                                 <option value="172">Russian Federation</option>
+                            
+                                 <option value="173">Rwanda</option>
+                            
+                                 <option value="174">Saint Helena</option>
+                            
+                                 <option value="175">Saint Kitts and Nevis</option>
+                            
+                                 <option value="176">Saint Lucia</option>
+                            
+                                 <option value="177">Samoa</option>
+                            
+                                 <option value="178">San Marino</option>
+                            
+                                 <option value="179">Sao Tome and Principe</option>
+                            
+                                 <option value="180">Saudi Arabia</option>
+                            
+                                 <option value="181">Senegal</option>
+                            
+                                 <option value="182">Serbia and Montenegro</option>
+                            
+                                 <option value="183">Seychelles</option>
+                            
+                                 <option value="184">Sierra Leone</option>
+                            
+                                 <option value="185">Singapore</option>
+                            
+                                 <option value="186">Slovakia</option>
+                            
+                                 <option value="187">Slovenia</option>
+                            
+                                 <option value="188">Soloman Islands</option>
+                            
+                                 <option value="189">Somalia</option>
+                            
+                                 <option value="190">South Africa</option>
+                            
+                                 <option value="191">South Georgia and the South S. Is.</option>
+                            
+                                 <option value="192">South Korea</option>
+                            
+                                 <option value="235">South Sudan</option>
+                            
+                                 <option value="193">Spain</option>
+                            
+                                 <option value="194">Sri Lanka</option>
+                            
+                                 <option value="195">St. Pierre and Miquelon</option>
+                            
+                                 <option value="196">St. Vincent</option>
+                            
+                                 <option value="197">Sudan</option>
+                            
+                                 <option value="198">Suriname</option>
+                            
+                                 <option value="199">Swaziland</option>
+                            
+                                 <option value="200">Sweden</option>
+                            
+                                 <option value="201">Switzerland</option>
+                            
+                                 <option value="202">Syria</option>
+                            
+                                 <option value="203">Taiwan</option>
+                            
+                                 <option value="204">Tajikistan</option>
+                            
+                                 <option value="205">Tanzania</option>
+                            
+                                 <option value="206">Thailand</option>
+                            
+                                 <option value="207">Timor-Leste</option>
+                            
+                                 <option value="208">Togo</option>
+                            
+                                 <option value="209">Tokelau</option>
+                            
+                                 <option value="210">Tonga</option>
+                            
+                                 <option value="211">Trinidad and Tobago</option>
+                            
+                                 <option value="212">Tunisia</option>
+                            
+                                 <option value="213">Turkey</option>
+                            
+                                 <option value="214">Turkmenistan</option>
+                            
+                                 <option value="215">Turks</option>
+                            
+                                 <option value="216">Tuvalu</option>
+                            
+                                 <option value="217">Uganda</option>
+                            
+                                 <option value="218">Ukraine</option>
+                            
+                                 <option value="219">United Arab Emirates</option>
+                            
+                                 <option value="220">United Kingdom</option>
+                            
+                                 <option value="221">United States</option>
+                            
+                                 <option value="222">Uruguay</option>
+                            
+                                 <option value="223">Uzbekistan</option>
+                            
+                                 <option value="224">Vanuatu</option>
+                            
+                                 <option value="225">Vatican City State</option>
+                            
+                                 <option value="226">Venezuela</option>
+                            
+                                 <option value="227">Vietnam</option>
+                            
+                                 <option value="228">Virgin Islands</option>
+                            
+                                 <option value="229">Wallis and Futuna</option>
+                            
+                                 <option value="230">Western Sahara</option>
+                            
+                                 <option value="231">Yemen</option>
+                            
+                                 <option value="232">Zambia</option>
+                            
+                                 <option value="233">Zimbabwe</option>
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="rightBar">
+                <div class="dashed" style="position: relative; padding: 20px;">
+                    <div style="position: absolute; right: -1px; top: 0px"><img src="{{STATIC_URL}}img/redux/mark.png" /></div>
+                    <p class="darkText">AGE</p>
+                    <p style="margin-top: 3px; padding-right: 20px;">At Refugees United we ask children under 18 years of age not to register. This is to protect minors and keep anyone from being able to search specifically for the most vulnerable.</p>
+                </div>
+            </div>
+            <div class="clear" ></div>
+            <div style="position: absolute; bottom:15px; right: 20px;">
+                <div class="submit">
+                    <a href="#" id="previous_3" style="font-style: italic; font-size: 11px; font-weight: bold;color: #169acc; margin-right: 20px;text-decoration: underline">Previous page</a>
+                    <a href="#" id="continue_3" class="button-big" style="display: inline-block;"><span>Continue</span></a>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="step_4" class="signupStep">
+    <h2>Create your free profile here</h2>
+    <div style="position: absolute; top: 0px; right:0px"><img src="{{STATIC_URL}}img/redux/1234_4.png" alt="first step"/></div>
+    <div class="hr" ></div>
+    <div class="leftBar">
+        <h3>Your username and password</h3>
+        <p style="width: 475px; margin-top: 3px">When using the search tool in the future, you will need to sign in. For this purpose you need a personal username and password.</p>
+
+        <div style="float: left;">
+            <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What will be your username?</p>
+            <div class="group dashed" style="width: 140px" id="usernameGroup">
+                <div style="position: relative; height: 27px;">
+                    <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                        <input type="text" name="userName" id="userName" style="width: 125px"/>
+                    </div>
+                </div>
+                <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />Enter your username</div>
+            </div>
+        </div>
+        <div class="clear" ></div>
+        <div style="float:left; "><!-- margin-left: 20px; -->
+            <p class="question"><img src="{{STATIC_URL}}img/redux/arrow.png" class="arrow"/>What will be your password?</p>
+            <div class="group dashed" style="width: 360px;" id="passwordGroup">
+                <div style="float: left">
+                    <div style="position: relative; height: 27px;">
+                        <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                            <input type="password" name="userPassword" id="userPassword" style="width: 125px"/>
+                        </div>
+                    </div>
+                    <div style="font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />Enter your password</div>
+                </div>
+                <div style="float: left; margin-left: 30px"><!--  -->
+                    <div style="position: relative; height: 27px;">
+                        <div class="darkinput" style="position: absolute; top:0px; left: 0px;">
+                            <input type="password" name="passwordRepeat" id="passwordRepeated" style="width: 125px"/>
+                        </div>
+                    </div>
+                    <div style="width: 200px; font-style: italic; font-size: 10px; margin-top: 10px; margin-left: 5px"><img src="{{STATIC_URL}}img/redux/arrowup.png" />Please type your password again to make sure you entered it correctly</div>
+                </div>
+                <div class="clear" ></div>
+            </div>
+        </div>
+        <div class="clear" ></div>
+        <div id="warning_2" class="warning" style="margin-top: 30px;">
+            <img src="{{STATIC_URL}}img/redux/bigmark.png" style="position: absolute; top:10px; left: 20px"/>
+            <div style="margin-left: 30px; padding-bottom: 10px">Looks like you misspelled your password, because the two words do not match. Try typing your password again.</div>
+        </div>
+    </div>
+    <div class="rightBar">
+        <div class="dashed" style="position: relative; padding: 20px;">
+            <div style="position: absolute; right: -1px; top: 0px"><img src="{{STATIC_URL}}img/redux/mark.png" /></div>
+                <p class="darkText">USERNAME</p>
+                <p style="margin-top: 3px; padding-right: 20px;">Choose a username that is unique, yet easy for you to remember. It may contain both numbers and letters. Your username will <span class="darkText">NOT </span>be visible on your public profile.</p>
+
+                <p style="margin-top: 20px" class="darkText">PASSWORD</p>
+                <p style="margin-top: 3px">In order to prevent others from accessing your profile, create a password that no one else can guess. It is a good idea to use both numbers and letters. Your password will <span class="darkText">NOT </span>be visible on your public profile.</p>
+
+                <p style="margin-top: 20px" class="darkText">REMEMBER</p>
+                <p style="margin-top: 3px">It is very important to memorise your username and password, so you are able to sign in to your profile in the future.</p>
+            </div>
+        </div>
+    <div class="clear" ></div>
+
+     <div style="position: absolute; bottom:15px; right: 20px;">
+         <div class="submit">
+             <a href="#" id="previous_4" style="font-style: italic; font-size: 11px; font-weight: bold;color: #169acc; margin-right: 20px;text-decoration: underline">Previous page</a>
+             <a href="#" id="continue_4" class="button-big" style="display: inline-block;"><span>Continue</span></a>
+         </div>
+     </div>
+</div>
+        <div id="loader" class="signupStep"><div class="loader" style="position: absolute; top: 200px; left: 400px;"></div></div>
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="step_final" class="signupStep">
+    <h2>Start your search now</h2>
+    <div class="hr" ></div>
+    <h3>Your profile has been created</h3>
+    <p style="margin-top: 3px">You are now ready to start using the search tool. Click the pink button to go to the Dashboard. The Dashboard is your main page within the system where you can make searches, edit your profile and write messages.</p>
+
+    <div style="float: left; width: 410px; border-right: 1px dashed #d6d6d6; margin-top: 30px">
+        <h4>Your profile right now:</h4>
+        <img src="{{STATIC_URL}}img/redux/johndoe.png" style="float: left; width: 111px;"/>
+        <div style="float:left; width:284px; margin-left: 15px">
+            <p style="font-size: 13px; font-weight: bold" id="nameHolder"></p>
+            <div style="float: left; width: 140px;">
+                <p style="margin-top: 5px;" class="label">Nickname(s)</p>
+                <p style="margin-top: 10px;" class="label">Age</p>
+                <p class="label">Country of birth</p>
+                <p style="margin-top: 13px;" class="label">Gender</p>
+            </div>
+            <div style="float: left; width: 140px;">
+                <p style="margin-top: 5px;" class="value" id="nickHolder"></p>
+                <p style="margin-top: 10px;" class="value" id="ageHolder"></p>
+                <p class="value" id="countryHolder"></p>
+                <p style="margin-top: 10px;" class="value"><img src="{{STATIC_URL}}img/redux/maleicon.png" id="genderIcon"/><span style="position: relative; top: -6px; left: 5px;" id="genderHolder">male</span></p>
+            </div>
+        </div>
+        <div class="clear" ></div>
+    </div>
+    <div style="float: left; width: 380px; padding-left: 40px; margin-top: 30px">
+        <h4>Your profile completion rate:</h4>
+        <div id="barholder">
+            <div id="completitionbar"><div id="completed" style="width: 150px"><div id="bubble">55%</div></div></div>
+            <span style="position: absolute; top: 20px; left: 0px; font-size: 14px">0%</span>
+            <span style="position: absolute; top: 20px; right: 0px; font-size: 14px">100%</span>
+        </div>
+        <p style="margin-top: 40px; font-size: 11px; font-style: italic;">If your profile is listed as less than 100% complete, it is because you chose not to enter all types of information when creating your profile. Having a 100% complete profile increases your chances of being found by family and friends in a search.</p>
+        <p style="margin-top: 10px; font-size: 11px; font-style: italic;"><a href="/user/editprofile" style="font-style: italic; font-size: 11px; font-weight: bold;color: #169acc; margin-right: 20px;text-decoration: underline">Edit your profile</a></p>
+    </div>
+    <div class="clear" ></div>
+
+    <div style="position: absolute; bottom: 5px; width: 833px">
+                <div id="pleasenote_top"></div>
+                <div style="background: #ffffff; padding-left: 25px;padding-bottom: 25px; padding-top: 25px">
+                    <p style="font-size: 13px; font-style: italic; padding-top: 5px; width: 510px;"><span class="darkText" style="font-style: italic; font-weight: bold; font-size: 13px;">PLEASE REMEMBER</span>&nbsp;to click the 'Sign out' button when you are done using the search tool.</p>
+                    <div style="position: absolute; top:15px; right: 10px;">
+                        <div class="submit" id="goto">
+                            <a href="/search/" class="button-jumbo"><span>Go to your Dashboard<br/>to start searching</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="pleasenote_bottom"></div>
+            </div>
+</div>
+    </div>
+
+    <div id="forgot-modal-content" style="position: relative">
+        
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+<div id="forgottenPage" class="modalDialog">
+    <div class="modalDialogHeader"><p>Forgot password</p><div class="sign">?!</div></div>
+
+    Type in your e-mail address and click 'Send' - you will then receive an e-mail with a link. Click the link in the e-mail to reset your password.
+    <p style="font-style: italic;color: black;margin-top: 20px;">Which e-mail did you enter when you created your profile?</p>
+
+    <div id="requestPassword">
+        <div style="position: relative; height: 30px;">
+            <div class="darkinput" style="position: absolute; top:10px; left: 0px;">
+                <input type="text" name="forgotEmail" id="forgotEmail" style="width: 250px"/>
+            </div>
+        </div>
+        <div class="progress" style="position: absolute; top:100px; right: 35px; display: none">&nbsp;</div>
+        <div style="position: absolute; top:83px; right: 10px;" id="savebtn">
+            <div class="submit" id="send">
+                <a href="#" onclick="requestPassword()" class="button-small"><span>Send</span></a>
+            </div>
+        </div>
+    </div>
+    <div id="requestPasswordFeedback" style="display: none; margin-top: 20px;"></div>
+</div>
+    </div>
+</div>
+
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+            </div>
+        </div>
+        <div id="footerwrap">
+            <div id="footer">
+                <div id="footerlogoleft"><a href="/"></a></div>
+                <div id="footertext">© Copyright 2005-2011 Refugees United. All rights reserved Refugees United is a U.S. 501(c)(3) tax exempt organization</div>
+                <div id="footerprivacy"><a href="https://info.refunite.org/content/privacy-policy">Privacy policy</a></div>
+                <div id="footerlogoright"><a href="/"><img src="{{STATIC_URL}}img/redux/footerlogoright.png" /></a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
