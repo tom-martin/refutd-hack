@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
-<!-- saved from url=(0091)https://m.refunite.org/ruwap/register/register3.jsp;jsessionid=4ee739507101a3fea019d82d2bcf -->
+<!-- saved from url=(0091)https://m.refunite.org/ruwap/register/register1.jsp;jsessionid=4ee739507101a3fea019d82d2bcf -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Registration</title>
 		<style type="text/css">
@@ -101,19 +101,44 @@ input, select, textarea {
 	<body>
 		<div>
             <div><img src="{{STATIC_URL}}Top.gif" alt="Refugees United"></div>
-				Please enter the following details.  
+			To use the service you must choose a username and password.
+<br>Your username must be a single word and the password must be at least 4 characters long.
 <br>
-<br>This information can be seen by anyone registered on Refugees United.  You decide what information you want to share, and you can both add and take away information at any time.  If you do not want to give information then simply leave the field blank. Remember: the more detailed information you enter into your profile, the greater the likelihood of being found by your family or friends.
+<br>On the following pages we will ask you a number of questions about yourself. This information is used to create a profile for you so that your friends and family can search for you.
+<br>
+<br>Please fill in the following information: 
+<br>
 
-				<br><br>
-				<p class="error">
+			<br><br>
+			<p class="error">
 </p>
-				<form action="createuser4" method="post">
+			<form action="createuser" method="post">
                     {% csrf_token %}
-					<p>
-						<label>In what place were you last together with your family?
+				<p>
+					<label>Username:
 </label><br>
-						<input type="text" name="lLoc" class="textbox">
+<img src="{{STATIC_URL}}me_green.png" alt="" class="logon_img"><input type="text" name="username" class="textbox">
+				</p>
+				<p>
+					<label>Password (at least 4 characters):
+</label><br>
+<img src="{{STATIC_URL}}lock_green.png" alt="" class="logon_img"><input type="password" name="password" class="textbox">
+				</p>
+				<p>
+					<label>Confirm Password:
+</label><br>
+					<img src="./Registration_files/lock_green.png" alt="" class="logon_img"><input type="password" name="confirmPassword" class="textbox">
+				</p>
+
+					<p>
+						<label>What is your first name?
+</label><br>
+						<input type="text" name="fName" class="textbox">
+					</p>
+					<p>
+						<label>What is your last name?
+</label><br>
+						<input type="text" name="lName" class="textbox">
 					</p>
 					<p>
 						<label>In which country were you born?
@@ -596,17 +621,12 @@ input, select, textarea {
 </label><br>
 						<input type="text" name="homeTown" class="textbox">
 					</p>
-					<p>
-						<label>Please enter any information that could identify you to your friends and family, such as your previous phone number or favorite song:
-</label><br>
-						<textarea name="oInfo" cols="50"></textarea>
-					</p>
-					<p>
-						<input name="next" value="NEXT" type="submit" class="submit">
-						<input name="back" value="BACK" type="submit" class="submit">
-					</p>
-				</form>
-				<br>		
+
+				<p>
+					<input name="submit" value="submit" type="submit" class="submit">
+				</p>
+			</form>
+			<br>		
 			<div class="footer"></div>
 		</div>
 	
