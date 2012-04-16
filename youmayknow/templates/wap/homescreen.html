@@ -96,6 +96,8 @@ input, select, textarea {
 	font-family:  Verdana, Helvetica, sans-serif; 
 	height: 24px;}
 .logon_img{position: static;float: left;margin: 0px 5px 0 0;}
+
+li { margin-bottom: 15px }
 		</style>
 	</head>
 	<body>
@@ -107,19 +109,11 @@ input, select, textarea {
 				<p class="error">
 </p>
 				<ol class="orderedListNumbered">
-					<li><a href="" accesskey="1">Change Profile
-</a></li>
-					<li><a href="" accesskey="2">Search
-</a></li>
-					<li><a href="" accesskey="3">Inbox
- (0 New Messages
-)</a></li>
-					<li><a href="" accesskey="4">Contact List
-</a></li>
-					<li><a href="" accesskey="5">About
-</a></li>
-					<li><a href="" accesskey="6">Log out
-</a></li>
+                    <li><a href="youmayknow" accesskey="0"><img src="{{STATIC_URL}}people.png" />People you may know</a></li>
+                    <li><a href="news" accesskey="0"><img src="{{STATIC_URL}}news.png" />News From your Home Town</a></li>
+
+                    <li><a href="" accesskey="2">Search</a></li>
+                    <li><a href="logout" accesskey="6">Log out</a></li>
 				</ol>
 				<br>		
 			<div class="footer"></div>

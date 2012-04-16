@@ -2,13 +2,9 @@
 <!-- saved from url=(0086)https://m.refunite.org/ruwap/auth/mainMenu.jsp;jsessionid=4ee739507101a3fea019d82d2bcf -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Main Menu</title>
-            <link type='text/css' href='{{ STATIC_URL }}bootstrap/css/bootstrap.css' rel='stylesheet' />
-
 		<style type="text/css">
-            h3 { margin-top: 10px;}
 			body { 
 	max-width: 350px; 
-    padding: 10px;
 	font-family: Verdana, 
 	Helvetica, sans-serif; 
 } 
@@ -109,45 +105,37 @@ input, select, textarea {
 		</style>
 	</head>
 	<body>
+		<div>
             <div><img src="{{STATIC_URL}}Top.gif" alt="Refugees United"></div>
             <p><a href="homescreen" accesskey="0">Home</a></p>
-    <h2>People you may know<span class="badge {% if newCount > 0 %}badge-error{% endif %}">{{ newCount }}</span></h2>
-    {% for result in results %}
-      
-      <h3>{{result.userName}}</h3>{% if not result.seen %}<span class="label label-important">New</span>{% endif %}
 
-      <div>{{result.firstName}} {{result.lastName}}</div>
-      
-      <div class="info">
-        {% if 'tribe' in result.matchingFields %} <span class="label label-info">{% endif %}
-          {{ result.tribe}}
-        {% if 'tribe' in result.matchingFields %}</span>{% endif %}
-      </div>
+            {% if home_town %}
+            {% for news_item in news %}
 
-      <div class="info">
-        {% if 'lastName' in result.matchingFields %} <span class="label label-info">{% endif %}
-        {{ result.lastName}}
-        {% if 'lastName' in result.matchingFields %}</span>{% endif %}
-      </div>
+                <div class='news_item'>
+                    <p>{{ news_item.text }}</p>
+                    <p><a href="user/{{news_item.author.username}}">{{ news_item.author.first_name }}
+                        {{ news_item.author.last_name }}</a>
+                    </p>
+                </div>
 
-      <div class="info">
-        {% if 'homeTown' in result.matchingFields %} <span class="label label-info">{% endif %}
-        {{ result.homeTown}}
-        {% if 'homeTown' in result.matchingFields %}</span>{% endif %}
-      </div>
+            {% endfor %}
+            {% else %}
+                <p>Sorry, we don't have any news from your hometown</p>
+            {% endif %}
+		</div>
 
-      <div class="info">
-        {% if 'familySize' in result.matchingFields %} <span class="label label-info">{% endif %}
-        {{ result.familySize}}
-        {% if 'familySize' in result.matchingFields %}</span>{% endif %}
-      </div>
-
-      <div class="info">
-        {% if 'countryOfBirth' in result.matchingFields %} <span class="label label-info">{% endif %}
-        {{ result.countryOfBirth}}
-        {% if 'countryOfBirth' in result.matchingFields %}</span>{% endif %}
-      </div>
-
-
-    {% endfor %}
+        {% if user.is_authenticated %}
+        <h3>Add Your News</h3>
+			<form action="add_news" method="post">
+				<p>
+					<label>News:
+</label><br><input type="text" name="text" class="textbox">
+</p><p>
+					<label>Home Town:
+</label><br><input type="text" name="home_town" class="textbox">
+				</p>
+				<p><input type="submit" name="submit" value="submit" class="submit"></p>
+			</form>
+        {% endif %}
 </body></html>

@@ -11,6 +11,11 @@ urlpatterns = patterns('youmayknow.views',
     (r'^createuserform$', 'createuserform'),
     (r'^createuser$', 'createuser'),
     (r'^homescreen$', 'homescreen'),
+    (r'^news$', 'news'),
+    (r'^logout$', 'logout_view'),
+    (r'^login$', 'homescreenlogin'),
+    (r'^user/(?P<user>\w+)/$', 'user'),
+                       (r'^add_news$', 'add_news'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

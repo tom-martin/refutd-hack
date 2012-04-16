@@ -111,6 +111,7 @@ input, select, textarea {
 
 			<br><br>
 			<p class="error">
+                {{ errors|safe }}
 </p>
 			<form action="createuser" method="post">
                     {% csrf_token %}
@@ -122,28 +123,28 @@ input, select, textarea {
 				<p>
 					<label>Password (at least 4 characters):
 </label><br>
-<img src="{{STATIC_URL}}lock_green.png" alt="" class="logon_img"><input type="password" name="password" class="textbox">
+<img src="{{STATIC_URL}}lock_green.png" alt="" class="logon_img"><input type="password" name="password1" class="textbox">
 				</p>
 				<p>
 					<label>Confirm Password:
 </label><br>
-					<img src="./Registration_files/lock_green.png" alt="" class="logon_img"><input type="password" name="confirmPassword" class="textbox">
+					<img src="./Registration_files/lock_green.png" alt="" class="logon_img"><input type="password" name="password2" class="textbox">
 				</p>
 
 					<p>
 						<label>What is your first name?
 </label><br>
-						<input type="text" name="fName" class="textbox">
+						<input type="text" name="first_name" class="textbox">
 					</p>
 					<p>
 						<label>What is your last name?
 </label><br>
-						<input type="text" name="lName" class="textbox">
+						<input type="text" name="last_name" class="textbox">
 					</p>
 					<p>
 						<label>In which country were you born?
 </label><br>
-						<select name="cOfBirth">
+						<select name="country_of_birth">
 							<option value="0"></option>
 							
 								<option value="234">Afghanistan</option>
@@ -619,7 +620,7 @@ input, select, textarea {
 					<p>
 						<label>What is the name of your home town or village?
 </label><br>
-						<input type="text" name="homeTown" class="textbox">
+						<input type="text" name="home_town" class="textbox">
 					</p>
 
 				<p>
