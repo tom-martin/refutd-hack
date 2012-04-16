@@ -1,41 +1,42 @@
 {% extends "wap/base.html" %}
 {% block content %}
-    <h2>People you may know<span class="badge {% if newCount > 0 %}badge-error{% endif %}">{{ newCount }}</span></h2>
+    <h2>People you may know</h2>
+
     {% for result in results %}
+        <h3>{{result.userName}}</h3>
 
-      <h3>{{result.userName}}</h3>{% if not result.seen %}<span class="label label-important">New</span>{% endif %}
+        {% if not result.seen %}<span class="new-result">New</span>{% endif %}
 
-      <div>{{result.firstName}} {{result.lastName}}</div>
+        <div>{{result.firstName}} {{result.lastName}}</div>
+
+        <div class="info">
+          {% if 'tribe' in result.matchingFields %} <span class="matched-field">{% endif %}
+            {{ result.tribe}}
+          {% if 'tribe' in result.matchingFields %}</span>{% endif %}
+        </div>
 
       <div class="info">
-        {% if 'tribe' in result.matchingFields %} <span class="label label-info">{% endif %}
-          {{ result.tribe}}
-        {% if 'tribe' in result.matchingFields %}</span>{% endif %}
-      </div>
-
-      <div class="info">
-        {% if 'lastName' in result.matchingFields %} <span class="label label-info">{% endif %}
+        {% if 'lastName' in result.matchingFields %} <span class="matched-field">{% endif %}
         {{ result.lastName}}
         {% if 'lastName' in result.matchingFields %}</span>{% endif %}
       </div>
 
       <div class="info">
-        {% if 'homeTown' in result.matchingFields %} <span class="label label-info">{% endif %}
+        {% if 'homeTown' in result.matchingFields %} <span class="matched-field">{% endif %}
         {{ result.homeTown}}
         {% if 'homeTown' in result.matchingFields %}</span>{% endif %}
       </div>
 
       <div class="info">
-        {% if 'familySize' in result.matchingFields %} <span class="label label-info">{% endif %}
+        {% if 'familySize' in result.matchingFields %} <span class="matched-field">{% endif %}
         {{ result.familySize}}
         {% if 'familySize' in result.matchingFields %}</span>{% endif %}
       </div>
 
       <div class="info">
-        {% if 'countryOfBirth' in result.matchingFields %} <span class="label label-info">{% endif %}
+        {% if 'countryOfBirth' in result.matchingFields %} <span class="matched-field">{% endif %}
         {{ result.countryOfBirth}}
         {% if 'countryOfBirth' in result.matchingFields %}</span>{% endif %}
       </div>
     {% endfor %}
-
 {% endblock %}

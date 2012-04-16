@@ -18,6 +18,7 @@ class UserProfile(models.Model):
     home_town = models.CharField(null=True, blank=True, max_length=255)
     country_of_birth = models.PositiveSmallIntegerField(null=True, blank=True)
     guid = models.CharField(null=True, blank=False, max_length=100)
+    mobile_number = models.CharField(null=True, blank=False, max_length=20)
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

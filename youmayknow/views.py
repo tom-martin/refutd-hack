@@ -1,3 +1,4 @@
+import redis, requests
 from suds.client import Client
 
 from django.shortcuts import render_to_response
@@ -8,22 +9,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-import requests
+from django.conf import settings
 
 from youmayknow.models import News, HomeTown
 
-import redis
-
 r = redis.StrictRedis(host='localhost', port=6379, db=1)
 
-url = 'http://78.109.215.13:8080/RefugeesUnited-RefugeesUnitedBusiness/OpenAPIBean?wsdl'
-client = Client(url)
-apiKey = '27341080-b050-11df-94e2-0800200c9a66'
-sms = 'http://api.clickatell.com/http/sendmsg?user=refunite&password=Phai1lee&api_id=3299042&to=%s&text=%s'
+API_KEY = settings.API_KEY
+client = Client(settings.API_WSDL)
 
 def send_sms(txt, num):
-    requests.get(sms % (num, txt))
-
+    requests.get(settings.SMS_ENDPOINT % (num, txt))
 
 def homescreenlogin(request):
     username = request.POST['username']
@@ -41,69 +37,72 @@ def homescreenlogin(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse(index))
-    
+
 def findMatches(result):
-    newSearch = client.factory.create('searchQuery')
+    new_search = client.factory.create('searchQuery')
+    potential_search_fields = [('tribe', 'tribe'), ('lastName', 'names'),
+                 ('homeTown', 'homeTown'), ('familySize', 'familySize'),
+                 ('countryOfBirth', 'countryOfBirth')]
+    searched_fields = []
+    for profile_field_name, search_field_name in potential_search_fields:
+        if hasattr(result, profile_field_name):
+            field_value = result[profile_field_name]
+            if field_value:
+                setattr(new_search, search_field_name, field_value)
+                searched_fields.append(profile_field_name)
 
-    def applyField(getFieldName, setFieldName):
-        if hasattr(result, getFieldName) and getattr(result, getFieldName) != None and getattr(result, getFieldName) != 0:
-            setattr(newSearch, setFieldName, getattr(result, getFieldName))
-            return True
-
-        return False
-
-    fieldsSearchedOn = []
-
-    if applyField("tribe", "tribe"): fieldsSearchedOn.append("tribe")
-    if applyField("lastName", "names"): fieldsSearchedOn.append("lastName")
-    if applyField("homeTown", "homeTown"): fieldsSearchedOn.append("homeTown")
-    if applyField("familySize", "familySize"): fieldsSearchedOn.append("familySize")
-    if applyField("countryOfBirth", "countryOfBirth"): fieldsSearchedOn.append("countryOfBirth")
-
-    if len(fieldsSearchedOn) >= 3:
-        resultSetSize = client.service.AdvancedSearchResultCount(newSearch, "27341080-b050-11df-94e2-0800200c9a66")
-        print resultSetSize
-        if resultSetSize <= 10 and resultSetSize > 1:
-            return client.service.AdvancedSearch(newSearch, "27341080-b050-11df-94e2-0800200c9a66"), fieldsSearchedOn
+    if len(searched_fields) >= 3:
+        num_results = client.service.AdvancedSearchResultCount(new_search, API_KEY)
+        if num_results <= 20 and num_results > 1:
+            search_results = client.service.AdvancedSearch(new_search, API_KEY)
+            return search_results, searched_fields
 
     return [], []
 
 @login_required
 def youmayknow(request):
+    """Based on information about the logged-in user, query the refugees
+    united API for likely matches.
+    """
     guid = request.user.get_profile().guid or ''
-    profile = client.service.GetProfile(guid, apiKey)
+    profile = client.service.GetProfile(guid, API_KEY)
     results, fields = findMatches(profile)
-    newCount = 0
     for result in results:
-        result['seen'] = result.guid in r.smembers("guids_seen:" + guid)
-        if not result['seen']:
-            r.sadd("guids_seen:" + guid, result.guid)
-            newCount += 1
+        result['seen'] = not r.sadd("guids_seen:%s" % guid, result.guid)
         result['matchingFields'] = []
         for field in fields:
             if profile[field] == result[field]:
                 result['matchingFields'].append(field)
 
-    return render_to_response('wap/youmayknow.html', {'results': results}, context_instance=RequestContext(request))
+    return render_to_response('wap/youmayknow.html',
+              {'results': results}, context_instance=RequestContext(request))
 
 def index(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse(homescreen))
-    return render_to_response('wap/index.html', {}, context_instance=RequestContext(request))
+    return render_to_response('wap/index.html', {},
+                  context_instance=RequestContext(request))
 
 def createuserform(request):
-    return render_to_response('wap/createuserform.html', {}, context_instance=RequestContext(request))
+    return render_to_response('wap/createuserform.html', {},
+                  context_instance=RequestContext(request))
 
 def createuser(request):
     form = UserCreationForm(request.POST)
     if form.is_valid():
         user = form.save()
-        # all kinds of bad going on here. This is a hack day project so suck it.
         profile = user.get_profile()
+
+        # HACK - bad idea to take unvalidated data from POST
         profile.home_town = request.POST['home_town']
         profile.country_of_birth = request.POST['country_of_birth']
+
+        # We are mocking up the actual WAP application, and pretending
+        # that this is a real registration on Refugees United
         profile.guid = '402881ae27b92f770127b98895211d42'
         profile.save()
+
+        # hack - log the new user in immediately
         user.backend='django.contrib.auth.backends.ModelBackend'
         login(request, user)
         return HttpResponseRedirect(reverse(homescreen))
@@ -113,7 +112,8 @@ def createuser(request):
 
 @login_required
 def homescreen(request):
-    return render_to_response('wap/homescreen.html', {}, context_instance=RequestContext(request))
+    return render_to_response('wap/homescreen.html', {},
+              context_instance=RequestContext(request))
 
 def news(request):
     if request.user.is_authenticated():
@@ -136,6 +136,7 @@ def user(request, user=''):
         data = {}
     return render_to_response('wap/user.html', data, context_instance=RequestContext(request))
 
+@login_required
 def add_news(request):
     try:
         home_town = HomeTown.objects.get(name=request.POST.get('home_town', ''))
@@ -144,5 +145,7 @@ def add_news(request):
     News.objects.create(author=request.user,
                         text=request.POST['text'],
                         home_town=home_town)
-    send_sms(request.POST['text'], '447943809605')
+    profiles = UserProfile.objects.filter(home_town__iexact=home_town.name)
+    for profile in profiles:
+        send_sms(request.POST['text'], profile.mobile_number)
     return HttpResponseRedirect(reverse(homescreen))
