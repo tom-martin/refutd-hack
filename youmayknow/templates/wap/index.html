@@ -1,163 +1,60 @@
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
-<!-- saved from url=(0084)https://m.refunite.org/ruwap/pages/logon.jsp;jsessionid=4d9ea2357a8dc83130b9fff02b76 -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Logon</title>
-		<style type="text/css">
-			body { 
-	max-width: 350px; 
-	font-family: Verdana, 
-	Helvetica, sans-serif; 
-} 
-table { 
-	width: 100%; 
-} 
-div { 
-	display: block; 
-	clear: both; 
-} 
-.img{
-	border:none; 
-	height: 16px; 
-	width: 16px;
-}
-.languageChoice { 
-	margin-top: 10px; 
-	margin-bottom: 10px; 
-	font-style: italic; 
-} 
-.selectLanguage { 
-	font-size: 110%; 
-	text-align: center; 
-	font-style: italic; 
-} 
-.error { 
-	color: #F00; 
-} 
-.msg { 
-	color:#06F; 
-} 
-.verticalBlock { 
-	display: block; 
-} 
-.basicLayout, .horizontalList { 
-	list-style-type: none; 
-} 
-.horizontalList li { 
-	display: inline; 
-} 
-.orderedListNumbered { 
-	list-style-type: decimal; 
-} 
-div.footer{
-    height:300px;
-	width:300px;
-    background-image: url({{STATIC_URL}}Bottom.gif);
-    background-repeat:no-repeat;
-}
-a{ 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-a:link { 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-a:visited, a.visited { 
-	color: #4B6B7C; 
-	text-decoration: none; 
-} 
-a:hover, a.hover { 
-	color: #09BDDC; 
-	text-decoration: none; 
-} 
-a:active, a.active { 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-label{
-	font-weight:bold;
-}
-input, select, textarea { 
-	background-color: #FFFFFF; 
-	border: 1px solid #000000; 
-	font-size: 12px; 
-	color:#000000; 
-	font-family: Verdana, Helvetica, sans-serif; 
-}
-.textbox{
-	width:290px;
-}
-.submit {
-	background-color: #94B9CD; 
-	border: 1px solid #000000; 
-	border-radius: 4px; 
-	font-size: 12px; 
-	color: #000000; 
-	font-family:  Verdana, Helvetica, sans-serif; 
-	height: 24px;}
-.logon_img{position: static;float: left;margin: 0px 5px 0 0;}
-		</style>
-	</head>
-	<body>
-		<div>
-            <div><img src="{{STATIC_URL}}Top.gif" alt="Refugees United"></div>
-			Thank you for using the Refugees United search tool.
-<br>We do NOT recommend the service of Refugees United to people at risk of being traced by potential persecutors.
-<br>
-<br>For more information about the service click <a href="https://m.refunite.org/ruwap/Logon?pB&lang=eng&about">here</a>.
-<br>If you are seeing this site on a computer or smartphone, you may prefer to use the Refugees United web site at <a href="http://www.refunite.org/">http://www.refunite.org/</a>.
-<br>
-<br>
+{% extends "wap/base.html" %}
+{% block content %}
+            Thank you for using the Refugees United search tool.
+            <br>We do NOT recommend the service of Refugees United to people at
+            risk of being traced by potential persecutors. <br> <br>For more
+            information about the service click
+            <a href="https://m.refunite.org/ruwap/Logon?pB&lang=eng&about">here</a>.
+            <br>If you are seeing this site on a computer or smartphone, you
+            may prefer to use the Refugees United web site at
+            <a href="http://www.refunite.org/">http://www.refunite.org/</a>.
+            <br>
+            <br>
             <h3>Search for news</h3>
 
-			<form action="news" method="get">
-				<p>
+            <form action="news" method="get">
+                <p>
             <img src="{{STATIC_URL}}news.png" />
-					<label>Home Town:
+                    <label>Home Town:
                     </label><br>
                     <input type="text" name="home_town" class="textbox">
-				</p>
-				<input type="submit" value="Search For News" class="submit">
-			</form>
+                </p>
+                <input type="submit" value="Search For News" class="submit">
+            </form>
 
-<br>
-<br>
-<br>Please enter your logon details or register a new user.
-<br>
+            <br>
+            <br>
+            <br>Please enter your logon details or register a new user.
+            <br><br>
+            <form action="createuserform" method="post">
+                {% csrf_token %}
+                <input type="submit" value="NEW USERS" class="submit">
+            </form>
 
-			<br><br>
-			<form action="createuserform" method="post">
+            <form action="login" method="post">
                 {% csrf_token %}
-				<input type="submit" value="NEW USERS" class="submit">
-			</form>
-			<p class="error">
-</p>
-			<form action="login" method="post">
-                {% csrf_token %}
-				<p>
-					<label>Username:
-</label><br>
-<img src="{{STATIC_URL}}me_green.png" alt="" class="logon_img"><input type="text" name="username" class="textbox">
-				</p>
-				<p>
-					<label>Password:
-</label><br>
-<img src="{{STATIC_URL}}lock_green.png" alt="" class="logon_img"><input type="password" name="password" class="textbox">
-				</p>
-				<p><input type="submit" name="signin" value="SIGN IN" class="submit"></p>
-			</form>
-			<br>
-			<p>
-				<a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=eng">Use m.refunite.org in english</a><br>
-				<a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=kisw">Tumia m.refunite.org kwa kiingereza</a><br>
-				<a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=som">Isticmaal m.refunite.org ayadoo ingiliish ah</a><br>
-				<a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=ara">&#1575;&#1587;&#1578;&#1582;&#1583;&#1575;&#1605; &#1605;&#1608;&#1602;&#1593; m.refunite.org &#1576;&#1575;&#1604;&#1604;&#1594;&#1577; &#1575;&#1604;&#1573;&#1606;&#1580;&#1604;&#1610;&#1586;&#1610;&#1577;
+                <p>
+                    <label>Username:</label><br>
+                    <img src="{{STATIC_URL}}me_green.png" alt="" class="logon_img">
+                    <input type="text" name="username" class="textbox">
+                </p>
+                <p>
+                    <label>Password:</label><br>
+                    <img src="{{STATIC_URL}}lock_green.png" alt="" class="logon_img">
+                    <input type="password" name="password" class="textbox">
+                </p>
+                <p>
+                    <input type="submit" name="signin" value="SIGN IN" class="submit">
+                </p>
+            </form>
+            <br>
+            <p>
+                <a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=eng">Use m.refunite.org in english</a><br>
+                <a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=kisw">Tumia m.refunite.org kwa kiingereza</a><br>
+                <a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=som">Isticmaal m.refunite.org ayadoo ingiliish ah</a><br>
+                <a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=ara">&#1575;&#1587;&#1578;&#1582;&#1583;&#1575;&#1605; &#1605;&#1608;&#1602;&#1593; m.refunite.org &#1576;&#1575;&#1604;&#1604;&#1594;&#1577; &#1575;&#1604;&#1573;&#1606;&#1580;&#1604;&#1610;&#1586;&#1610;&#1577;
 <br>
 </a>
-				<a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=fre">Utiliser m.refunite.org en français</a>
-			</p>
-			<div class="footer"></div>
-		</div>
-	
-
-</body></html>
+                <a href="https://m.refunite.org/ruwap/Languages;jsessionid=4d9ea2357a8dc83130b9fff02b76?lang=fre">Utiliser m.refunite.org en français</a>
+            </p>
+{% endblock %}

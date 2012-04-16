@@ -1,116 +1,9 @@
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
-<!-- saved from url=(0086)https://m.refunite.org/ruwap/auth/mainMenu.jsp;jsessionid=4ee739507101a3fea019d82d2bcf -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Main Menu</title>
-		<style type="text/css">
-			body { 
-	max-width: 350px; 
-	font-family: Verdana, 
-	Helvetica, sans-serif; 
-} 
-table { 
-	width: 100%; 
-} 
-div { 
-	display: block; 
-	clear: both; 
-} 
-.img{
-	border:none; 
-	height: 16px; 
-	width: 16px;
-}
-.languageChoice { 
-	margin-top: 10px; 
-	margin-bottom: 10px; 
-	font-style: italic; 
-} 
-.selectLanguage { 
-	font-size: 110%; 
-	text-align: center; 
-	font-style: italic; 
-} 
-.error { 
-	color: #F00; 
-} 
-.msg { 
-	color:#06F; 
-} 
-.verticalBlock { 
-	display: block; 
-} 
-.basicLayout, .horizontalList { 
-	list-style-type: none; 
-} 
-.horizontalList li { 
-	display: inline; 
-} 
-.orderedListNumbered { 
-	list-style-type: decimal; 
-} 
-div.footer{
-    height:300px;
-	width:300px;
-    background-image: url({{STATIC_URL}}Bottom.gif);
-    background-repeat:no-repeat;
-}
-a{ 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-a:link { 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-a:visited, a.visited { 
-	color: #4B6B7C; 
-	text-decoration: none; 
-} 
-a:hover, a.hover { 
-	color: #09BDDC; 
-	text-decoration: none; 
-} 
-a:active, a.active { 
-	color: #2A759D; 
-	text-decoration: none; 
-} 
-label{
-	font-weight:bold;
-}
-input, select, textarea { 
-	background-color: #FFFFFF; 
-	border: 1px solid #000000; 
-	font-size: 12px; 
-	color:#000000; 
-	font-family: Verdana, Helvetica, sans-serif; 
-}
-.textbox{
-	width:290px;
-}
-.submit {
-	background-color: #94B9CD; 
-	border: 1px solid #000000; 
-	border-radius: 4px; 
-	font-size: 12px; 
-	color: #000000; 
-	font-family:  Verdana, Helvetica, sans-serif; 
-	height: 24px;}
-.logon_img{position: static;float: left;margin: 0px 5px 0 0;}
-
-.news_item {
-    border: 1px solid #BBB;
-    padding: 10px;
-}
-
-		</style>
-	</head>
-	<body>
-		<div>
-            <div><img src="{{STATIC_URL}}Top.gif" alt="Refugees United"></div>
+{% extends "wap/base.html" %}
+{% block content %}
             <p><a href="homescreen" accesskey="0">Home</a></p>
 
             {% if home_town %}
-            {% for news_item in news %}
+                {% for news_item in news %}
 
                 <div class='news_item'>
                     <p>{{ news_item.text }}</p>
@@ -119,23 +12,26 @@ input, select, textarea {
                     </p>
                 </div>
 
-            {% endfor %}
+                {% endfor %}
             {% else %}
                 <p>Sorry, we don't have any news from your hometown</p>
             {% endif %}
-		</div>
+        </div>
 
         {% if user.is_authenticated %}
         <h3>Add Your News</h3>
-			<form action="add_news" method="post">
-				<p>
-					<label>News:
-</label><br><input type="text" name="text" class="textbox">
-</p><p>
-					<label>Home Town:
-</label><br><input type="text" name="home_town" class="textbox">
-				</p>
-				<p><input type="submit" name="submit" value="submit" class="submit"></p>
-			</form>
+            <form action="add_news" method="post">
+                <p>
+                    <label>News:</label>
+                    <input type="text" name="text" class="textbox">
+                </p>
+                <p>
+                    <label>Home Town:</label>
+                    <input type="text" name="home_town" class="textbox">
+                </p>
+                <p>
+                    <input type="submit" name="submit" value="submit" class="submit">
+                </p>
+            </form>
         {% endif %}
-</body></html>
+{% endblock %}
